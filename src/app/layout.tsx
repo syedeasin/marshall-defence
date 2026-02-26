@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SmoothScroll from "@/components/layout/SmoothScroll";
 import "@/styles/globals.css";
 
 const GeistSans = localFont({
@@ -24,9 +25,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={GeistSans.variable}>
       <body className="font-geist bg-black text-white antialiased">
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <SmoothScroll>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );

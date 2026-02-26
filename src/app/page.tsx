@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Shield, Globe, Award, Users, Truck, Lock } from "lucide-react";
@@ -30,10 +30,62 @@ const features = [
 
 const featured8 = PRODUCTS.slice(0, 8);
 
+const aboutText =
+  "Marshall Defense is a military and sporting good equipment supplier that delivers solutions that meet requirements. Meeting your needs and providing top quality service is our mission in delivering to our clients.";
+
 export default function HomePage() {
   const [carouselIdx, setCarouselIdx] = useState(0);
   const visibleCount = 4;
   const maxIdx = featured8.length - visibleCount;
+
+  const [aboutRevealed, setAboutRevealed] = useState(false);
+  const aboutParaRef = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    const el = aboutParaRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setAboutRevealed(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Seal scroll rotation
+  const sealRef = useRef<HTMLDivElement>(null);
+  const currentRot = useRef(0);
+  const targetRot = useRef(0);
+  const lastScrollY = useRef(0);
+  const sealRafId = useRef<number>(0);
+
+  useEffect(() => {
+    const animate = () => {
+      currentRot.current += (targetRot.current - currentRot.current) * 0.08;
+      if (sealRef.current) {
+        sealRef.current.style.transform = `rotate(${currentRot.current}deg)`;
+      }
+      sealRafId.current = requestAnimationFrame(animate);
+    };
+    sealRafId.current = requestAnimationFrame(animate);
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      targetRot.current += (y - lastScrollY.current) * 0.04;
+      lastScrollY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(sealRafId.current);
+    };
+  }, []);
 
   return (
       <>
@@ -83,35 +135,40 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto">
 
             {/* Row 1: label top-left, logo left col, text right col */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-10">
+            <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 lg:gap-20 mb-20">
 
               {/* Left col — label + seal logo */}
-              <div className="flex flex-col">
+              <div className="flex flex-col justify-between">
                 {/* [ ABOUT US ] bracket label */}
-                <div className="inline-flex items-center gap-1 mb-10 self-start">
+                <div className="inline-flex items-center gap-1 self-start">
                   <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">[</span>
                   <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">About Us</span>
                   <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
                 </div>
 
-                {/* Seal / Logo badge */}
-                <Image
-                    src="/images/seal.webp"
-                    alt="Marshall Defense seal"
-                    width={140}
-                    height={140}
-                />
+                {/* Seal / Logo badge — rotates with scroll */}
+                <div ref={sealRef} style={{ width: 148, height: 148, willChange: "transform" }}>
+                  <Image
+                      src="/images/seal.webp"
+                      alt="Marshall Defense seal"
+                      width={148}
+                      height={148}
+                  />
+                </div>
               </div>
 
               {/* Right col — headline + body + link */}
               <div className="flex flex-col justify-center">
-                <p className="text-white text-[22px] leading-[34px] font-medium tracking-tight mb-5">
-                  Marshall Defense is a military and sporting good equipment supplier that delivers solutions that meet  requirements. Meeting your needs and  providing top quality service is our mission in delivering to our clients.
+                <p
+                  ref={aboutParaRef}
+                  className="text-p1 tracking-p font-medium text-white mb-10"
+                >
+                  {aboutText}
                 </p>
 
                 <Link
                     href="/about"
-                    className="text-btn2 tracking-btn2 inline-flex items-center gap-2 text-primary font-semibold tracking-[0.12em] uppercase border-b border-primary/40 pb-0.5 self-start hover:border-primary transition-colors duration-200 group"
+                    className="text-btn2 tracking-btn2 inline-flex items-center text-primary font-semibold uppercase border-b border-primary pb-0.5 self-start hover:opacity-70 transition-opacity duration-200"
                 >
                   Learn More
                 </Link>
