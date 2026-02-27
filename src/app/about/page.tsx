@@ -1,119 +1,247 @@
-import { ArrowUpRight, Shield, Target, Award, Users, Globe, Zap } from "lucide-react";
+// src/app/about/page.tsx
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 import CTASection from "@/components/sections/CTASection";
 
-const values = [
-  { icon: <Shield size={24} />, title: "Integrity", desc: "We operate with transparency and honesty in every partnership and transaction." },
-  { icon: <Target size={24} />, title: "Precision", desc: "We source only products that meet the highest accuracy and reliability standards." },
-  { icon: <Award size={24} />, title: "Excellence", desc: "Continuous improvement drives our operations and customer service model." },
-  { icon: <Users size={24} />, title: "Partnership", desc: "We build long-term relationships, not just one-time transactions." },
-  { icon: <Globe size={24} />, title: "Global Reach", desc: "Serving defense communities across six continents with seamless logistics." },
-  { icon: <Zap size={24} />, title: "Innovation", desc: "We stay ahead of evolving defense technology to keep clients equipped." },
+/* ── Industries we serve ── */
+const industries = [
+  {
+    tag: "Shooting Ranges",
+    title: "Shooting Academies",
+    desc: "Providing a vast array of shooting academies across the United States for precise tactical training.",
+    icon: "🎯",
+  },
+  {
+    tag: "Military",
+    title: "Infantry Defense",
+    desc: "For military, police, & defense, Marshall provides trusted products to all military branches.",
+    icon: "🛡️",
+  },
+  {
+    tag: "Law Enforcement",
+    title: "Local & State Police",
+    desc: "We cooperate with the latest body armor and defense products for any situation on the front line.",
+    icon: "⚔️",
+  },
+  {
+    tag: "Exhibitions",
+    title: "Gun Shows",
+    desc: "For the collectors, we supply both legacy and demonstration firearms for exhibitions.",
+    icon: "🏛️",
+  },
+  {
+    tag: "Dealers",
+    title: "Sporting Goods",
+    desc: "Hunting, sporting, or home-defense, rely on Marshall to keep you equipped for any situation.",
+    icon: "🏹",
+  },
+  {
+    tag: "Ammunition",
+    title: "Mixed Munitions",
+    desc: "Whatever your need, Marshall has you covered with the best defense options in every category.",
+    icon: "💥",
+  },
 ];
 
-const team = [
-  { name: "Col. James Marshall (Ret.)", role: "Founder & CEO", bio: "30 years military service. Former DoD procurement officer." },
-  { name: "Sarah Chen", role: "Chief Operations Officer", bio: "Supply chain expert with 15 years in defense logistics." },
-  { name: "Lt. Col. Marcus Wade (Ret.)", role: "VP Business Development", bio: "Former Army Special Forces with deep procurement expertise." },
-  { name: "Elena Vasquez", role: "Director of Compliance", bio: "ITAR/EAR compliance specialist with global export experience." },
-  { name: "David Park", role: "Head of Technical Solutions", bio: "Former SOCOM weapons instructor and product specialist." },
-  { name: "Rachel Torres", role: "VP Client Relations", bio: "15 years managing government and enterprise defense accounts." },
+/* ── Stats row ── */
+const stats = [
+  { value: "15+", label: "Years of Experience" },
+  { value: "53+", label: "Trusted Supply Partners" },
+  { value: "3,701+", label: "Products Delivered Globally" },
+  { value: "98%", label: "Regulatory Compliance" },
 ];
 
 export default function AboutPage() {
   return (
-    <>
-      {/* Header */}
-      <section className="py-24 px-4 md:px-8 max-w-7xl mx-auto text-center">
-        <span className="text-primary text-sm font-medium uppercase tracking-widest block mb-4">About Us</span>
-        <h1 className="text-[64px] leading-[72px] font-bold tracking-[-0.03em] text-white mb-6">
-          Two Decades of Trusted<br />Defense Supply
-        </h1>
-      </section>
-
-      {/* Text Section */}
-      <section className="py-8 px-4 md:px-8 max-w-4xl mx-auto border-t border-white/5">
-        <p className="text-[20px] leading-8 text-n3 mb-6">
-          Marshall-Defense was founded in 2004 by Colonel James Marshall (Ret.) with a singular mission: to provide military, law enforcement, and government agencies with the highest-quality defense equipment available — reliably, compliantly, and efficiently.
-        </p>
-        <p className="text-[18px] leading-7 text-n4 mb-6">
-          What began as a small procurement consultancy has grown into a globally recognized B2B defense supplier operating in over 50 countries. Our catalog includes thousands of products spanning firearms, ammunition, tactical apparel, optics, communications equipment, and more.
-        </p>
-        <p className="text-[18px] leading-7 text-n4">
-          We are GSA schedule contractors, fully ITAR and EAR compliant, and maintain strict quality assurance protocols across all product categories. Our logistics network ensures secure, on-time delivery regardless of destination.
-        </p>
-      </section>
-
-      {/* 2-col Feature */}
-      <section className="py-24 px-4 md:px-8 max-w-7xl mx-auto border-t border-white/5">
-        <div className="grid md:grid-cols-2 gap-16 items-center">
-          <div>
-            <span className="text-primary text-sm font-medium uppercase tracking-widest block mb-4">Our Mission</span>
-            <h2 className="text-[48px] leading-[56px] font-bold tracking-[-0.025em] text-white mb-6">Empowering Defense Through Reliable Supply</h2>
-            <p className="text-n3 text-[18px] leading-7 mb-6">
-              Our mission is to ensure that those who defend freedom and security have access to the best equipment available. We eliminate procurement friction and deliver certainty.
-            </p>
-            <div className="space-y-4 mb-8">
-              {["ISO 9001:2015 Certified", "GSA Schedule Contractor", "ITAR/EAR Compliant", "NATO Supply Chain Partner"].map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <div className="w-2 h-2 rounded-full bg-primary flex-none" />
-                  <span className="text-n2 text-[16px]">{item}</span>
-                </div>
-              ))}
-            </div>
-            <Button variant="solid" size="lg" href="/products" icon={<ArrowUpRight size={18} />}>View Our Products</Button>
+      <>
+        {/* ════════════════════════════════════════════
+          HERO – About Marshall Defense Company
+          ════════════════════════════════════════════ */}
+        <section className="pt-32 md:pt-40 pb-16 px-4 md:px-8 max-w-7xl mx-auto">
+          {/* Bracket label */}
+          <div className="inline-flex items-center gap-1 mb-3">
+            <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">[</span>
+            <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">
+            About Us
+          </span>
+            <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
           </div>
-          <div className="glass-card rounded-2xl p-8">
-            <div className="grid grid-cols-2 gap-6">
-              {[{ n: "20+", l: "Years Experience" }, { n: "50+", l: "Countries Served" }, { n: "500+", l: "Products Available" }, { n: "98%", l: "Client Retention" }].map((s) => (
-                <div key={s.n} className="text-center">
-                  <div className="text-[40px] font-bold text-primary leading-none mb-2">{s.n}</div>
-                  <div className="text-n3 text-sm">{s.l}</div>
-                </div>
-              ))}
+
+          <h1 className="text-h3 md:text-h1 tracking-h3 md:tracking-h1 font-bold text-white mb-10 md:mb-14">
+            About Marshall
+            <br />
+            Defense Company
+          </h1>
+
+          {/* Two hero images side by side */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-n9">
+              <Image
+                  src="https://placehold.co/800x600/1a1a1a/333?text=Tactical+Operator"
+                  alt="Tactical operator"
+                  fill
+                  className="object-cover"
+                  priority
+              />
+            </div>
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-n9">
+              <Image
+                  src="https://placehold.co/800x600/1a1a1a/333?text=Warehouse+Storage"
+                  alt="Defense warehouse"
+                  fill
+                  className="object-cover"
+              />
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 6 cards - Values */}
-      <section className="py-24 px-4 md:px-8 max-w-7xl mx-auto border-t border-white/5">
-        <div className="text-center mb-12">
-          <span className="text-primary text-sm font-medium uppercase tracking-widest block mb-2">Our Values</span>
-          <h2 className="text-[48px] leading-[56px] font-bold tracking-[-0.025em] text-white">What We Stand For</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {values.map((v, i) => (
-            <div key={i} className="glass-card rounded-xl p-6">
-              <div className="text-primary mb-4">{v.icon}</div>
-              <h3 className="text-white font-semibold text-lg mb-2">{v.title}</h3>
-              <p className="text-n4 text-sm leading-6">{v.desc}</p>
+        {/* ════════════════════════════════════════════
+          OUR STORY
+          ════════════════════════════════════════════ */}
+        <section className="py-16 md:py-24 px-4 md:px-8 max-w-4xl mx-auto text-center">
+          {/* Bracket label */}
+          <div className="inline-flex items-center gap-1 mb-4">
+            <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">[</span>
+            <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">
+            Our Story
+          </span>
+            <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
+          </div>
+
+          <p className="text-p3 md:text-p2 tracking-p font-normal text-n2 mb-6">
+            Marshall Defense is a military and sporting goods supplier delivering reliable, compliant
+            solutions. As part of Marshall Enterprises, we serve defense, law enforcement, and{" "}
+            <span className="text-white font-semibold">commercial</span> partners with trusted products.
+          </p>
+          <p className="text-p4 tracking-p font-normal text-n3">
+            Our range includes ammunition, firearms, defense apparel, and essential supplies, supported by
+            responsible sourcing and dependable delivery.
+          </p>
+        </section>
+
+        {/* ════════════════════════════════════════════
+          STATS ROW
+          ════════════════════════════════════════════ */}
+        <section className="pb-16 md:pb-24 px-4 md:px-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 text-center">
+            {stats.map((s, i) => (
+                <div
+                    key={s.label}
+                    className={`${i < stats.length - 1 ? "md:border-r md:border-white/10" : ""}`}
+                >
+                  <div className="text-h3 md:text-h2 tracking-h2 font-bold text-white">{s.value}</div>
+                  <p className="text-p5 tracking-p font-normal text-n4 mt-1">{s.label}</p>
+                </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════
+          OPERATIONAL FOCUS – Mission & Vision
+          ════════════════════════════════════════════ */}
+        <section className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto border-t border-white/5">
+          {/* Section label + headline */}
+          <div className="text-center mb-12">
+            <div className="inline-flex items-center gap-1 mb-3">
+              <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">[</span>
+              <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">
+              Operational Focus
+            </span>
+              <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
             </div>
-          ))}
-        </div>
-      </section>
+            <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
+              Fits defense, law enforcement,
+              <br className="hidden md:block" />
+              and enterprise audiences
+            </h2>
+          </div>
 
-      {/* Team section */}
-      <section className="py-24 px-4 md:px-8 max-w-7xl mx-auto border-t border-white/5">
-        <div className="text-center mb-12">
-          <span className="text-primary text-sm font-medium uppercase tracking-widest block mb-2">Leadership</span>
-          <h2 className="text-[48px] leading-[56px] font-bold tracking-[-0.025em] text-white">Meet the Team</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {team.map((m, i) => (
-            <div key={i} className="glass-card rounded-xl p-6">
-              <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center mb-4">
-                <span className="text-primary font-bold text-xl">{m.name[0]}</span>
-              </div>
-              <h3 className="text-white font-semibold mb-1">{m.name}</h3>
-              <p className="text-primary text-sm mb-3">{m.role}</p>
-              <p className="text-n4 text-sm leading-5">{m.bio}</p>
+          {/* 2-col: image left, text right */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            {/* Image */}
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-n9">
+              <Image
+                  src="https://placehold.co/800x600/1a1a1a/333?text=Operator+Aiming"
+                  alt="Operational focus"
+                  fill
+                  className="object-cover"
+              />
             </div>
-          ))}
-        </div>
-      </section>
 
-      <CTASection />
-    </>
+            {/* Mission + Vision text */}
+            <div>
+              <h3 className="text-h5 tracking-h5 font-bold text-white mb-3">Our Mission</h3>
+              <p className="text-p4 tracking-p font-normal text-n3 mb-8">
+                We deliver defense and sporting goods solutions that meet real operational needs with accuracy,
+                transparency, and reliability, supported by consistent quality and responsible execution across
+                all operations.
+              </p>
+
+              <h3 className="text-h5 tracking-h5 font-bold text-white mb-3">Our Vision</h3>
+              <p className="text-p4 tracking-p font-normal text-n3 mb-8">
+                We build long-term trust through strict quality standards, responsible sourcing, and fully
+                compliant operations that support reliable partnerships worldwide within respected defense
+                environments.
+              </p>
+
+              <Link
+                  href="/products"
+                  className="inline-flex items-center justify-center rounded-full bg-primary text-white uppercase font-semibold text-btn2 tracking-btn2 py-[18px] px-7 hover:opacity-90 transition-opacity"
+              >
+                Product Catalog
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════
+          INDUSTRIES WE SERVE
+          ════════════════════════════════════════════ */}
+        <section className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto border-t border-white/5">
+          {/* Section label + headline */}
+          <div className="text-center mb-14">
+            <div className="inline-flex items-center gap-1 mb-3">
+              <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">[</span>
+              <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">
+              Industries We Serve
+            </span>
+              <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
+            </div>
+            <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
+              Providing A vast Array of Defense
+              <br className="hidden md:block" />
+              Firearms and Ammunitions
+            </h2>
+          </div>
+
+          {/* 3×2 grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-xl overflow-hidden">
+            {industries.map((ind) => (
+                <div
+                    key={ind.title}
+                    className="bg-black p-6 md:p-8 flex flex-col gap-4 hover:bg-white/[0.02] transition-colors"
+                >
+                  {/* Tag */}
+                  <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-n5">
+                {ind.tag}
+              </span>
+                  {/* Title */}
+                  <h4 className="text-h6 tracking-h6 font-bold text-white">{ind.title}</h4>
+                  {/* Description */}
+                  <p className="text-p5 tracking-p font-normal text-n4 flex-1">{ind.desc}</p>
+                  {/* Icon placeholder */}
+                  <span className="text-2xl opacity-60">{ind.icon}</span>
+                </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ════════════════════════════════════════════
+          CTA SECTION (reused component)
+          ════════════════════════════════════════════ */}
+        <CTASection />
+      </>
   );
 }

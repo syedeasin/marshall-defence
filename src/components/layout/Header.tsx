@@ -7,11 +7,11 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 
 const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "About Us", href: "/about" },
-    { label: "Products", href: "/products" },
-    { label: "Energetics", href: "/energetics" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "Home", href: "/", active: true },
+    { label: "About Us", href: "/about", active: false },
+    { label: "Products", href: "/products", active: false },
+    { label: "Energetics", href: "/energetics", active: false },
+    { label: "Contact Us", href: "/contact", active: false },
 ];
 
 export default function Header() {
@@ -44,19 +44,28 @@ export default function Header() {
 
                     {/* Desktop Nav */}
                     <nav className="hidden md:flex items-center gap-10">
-                        {navLinks.map((l) => (
-                            <Link
-                                key={l.href}
-                                href={l.href}
-                                className="text-white text-p4 tracking-p font-normal transition-colors hover:opacity-80"
-                            >
-                                {l.label}
-                            </Link>
-                        ))}
+                        {navLinks.map((l) =>
+                            l.active ? (
+                                <Link
+                                    key={l.href}
+                                    href={l.href}
+                                    className="text-white text-p4 tracking-p font-normal transition-colors hover:opacity-80"
+                                >
+                                    {l.label}
+                                </Link>
+                            ) : (
+                                <span
+                                    key={l.href}
+                                    className="text-white text-p4 tracking-p font-normal opacity-40 cursor-not-allowed"
+                                >
+                                    {l.label}
+                                </span>
+                            )
+                        )}
                     </nav>
 
                     {/* Desktop CTA */}
-                    <div className="hidden md:block">
+                    <div className="hidden md:block opacity-40 cursor-not-allowed pointer-events-none">
                         <Button variant="glass" size="lg" href="/contact">
                             Request a Quote
                         </Button>
@@ -103,26 +112,31 @@ export default function Header() {
                         <ul className="flex flex-col gap-3">
                             {navLinks.map((l) => (
                                 <li key={l.href}>
-                                    <Link
-                                        href={l.href}
-                                        onClick={() => setOpen(false)}
-                                        className=" w-full block text-p2 tracking-p2 font-medium uppercase text-white py-3 border-b border-w10 transition-opacity hover:opacity-80"
-                                    >
-                                        {l.label}
-                                    </Link>
+                                    {l.active ? (
+                                        <Link
+                                            href={l.href}
+                                            onClick={() => setOpen(false)}
+                                            className="w-full block text-p2 tracking-p2 font-medium uppercase text-white py-3 border-b border-w10 transition-opacity hover:opacity-80"
+                                        >
+                                            {l.label}
+                                        </Link>
+                                    ) : (
+                                        <span className="w-full block text-p2 tracking-p2 font-medium uppercase text-white py-3 border-b border-w10 opacity-40 cursor-not-allowed">
+                                            {l.label}
+                                        </span>
+                                    )}
                                 </li>
                             ))}
                         </ul>
                     </nav>
 
                     {/* Bottom: CTA */}
-                    <div className="pt-6">
+                    <div className="pt-6 opacity-40 cursor-not-allowed pointer-events-none">
                         <Button
                             variant="glass"
                             size="lg"
                             href="/contact"
                             className="w-full"
-                            onClick={() => setOpen(false)}
                         >
                             Request a Quote
                         </Button>
