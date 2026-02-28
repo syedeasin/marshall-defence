@@ -84,14 +84,28 @@ export default function CapabilitiesSection() {
     return (
         /* Wrapper is 4 × 100vh tall — section sticks inside it */
         <div ref={wrapperRef} style={{ height: `${items.length * 100}vh` }}>
-            <section className="sticky top-0 h-screen overflow-hidden flex flex-col py-[120px] border-t border-n9 bg-black">
+            <section className="sticky top-0 h-screen overflow-hidden flex flex-col py-[80px] lg:py-[120px] border-t border-n9 bg-black">
 
                 {/* Inner content — fills the space between the two 120px paddings */}
                 <div className="flex-1 min-h-0 max-w-7xl mx-auto w-full px-4 md:px-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-[80px] h-full">
 
+                        {/* ─── MOBILE ONLY: label + heading (order-1) ─── */}
+                        <div className="order-1 lg:hidden mb-12 lg:mb-0">
+                            <div className="inline-flex items-center gap-1 uppercase">
+                                <span className="text-n2 text-p3 tracking-p font-normal">[</span>
+                                <span className="text-n2 text-p4 tracking-p font-normal">
+                                    {items[0].topTitle}
+                                </span>
+                                <span className="text-n2 text-p3 tracking-p font-normal">]</span>
+                            </div>
+                            <h3 className="mt-2 text-h4 tracking-h3 font-bold text-white whitespace-pre-line">
+                                {items[0].title}
+                            </h3>
+                        </div>
+
                         {/* ─── LEFT: image panel ─── */}
-                        <div className="order-2 lg:order-1 h-[45vh] lg:h-full">
+                        <div className="order-2 lg:order-1 h-[40vh] lg:h-full mb-4 lg:mb-0">
                             <div className="relative h-full rounded-2xl border border-w10 overflow-hidden">
 
                                 {/* All images stacked — active one fades in */}
@@ -109,7 +123,7 @@ export default function CapabilitiesSection() {
                                 ))}
 
                                 {/* Gradient overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent" />
 
                                 {/* Overlay text — all items stacked, active fades in */}
                                 {items.map((item, i) => (
@@ -130,11 +144,11 @@ export default function CapabilitiesSection() {
                             </div>
                         </div>
 
-                        {/* ─── RIGHT: label + heading + capability list ─── */}
-                        <div className="order-1 lg:order-2 flex flex-col lg:h-full">
+                        {/* ─── RIGHT: label + heading (desktop only) + capability list ─── */}
+                        <div className="order-3 lg:order-2 flex flex-col lg:h-full">
 
-                            {/* Label + heading — pinned to the top */}
-                            <div className="text-left">
+                            {/* Label + heading — desktop only */}
+                            <div className="hidden lg:block text-left">
                                 <div className="inline-flex items-center gap-1 uppercase">
                                     <span className="text-n2 text-p3 tracking-p font-normal">[</span>
                                     <span className="text-n2 text-p4 tracking-p font-normal">
@@ -142,7 +156,7 @@ export default function CapabilitiesSection() {
                                     </span>
                                     <span className="text-n2 text-p3 tracking-p font-normal">]</span>
                                 </div>
-                                <h3 className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white whitespace-pre-line">
+                                <h3 className="mt-2 text-h3 tracking-h3 font-bold text-white whitespace-pre-line">
                                     {items[0].title}
                                 </h3>
                             </div>
@@ -150,15 +164,15 @@ export default function CapabilitiesSection() {
                             {/* Spacer — pushes list to the bottom on desktop */}
                             <div className="flex-1" />
 
-                            {/* Desktop capability list */}
-                            <div className="hidden md:block">
+                            {/* Capability list */}
+                            <div className="block">
                                 {items.map((it, idx) => {
                                     const isActive = idx === active;
                                     return (
                                         <button
                                             key={it.key}
                                             onClick={() => setActive(idx)}
-                                            className="w-full text-left flex items-center gap-4 py-6 border-b border-n9"
+                                            className="w-full text-left flex items-center gap-4 py-3 lg:py-6 border-b border-n9"
                                         >
                                             <Check
                                                 size={18}
@@ -167,7 +181,7 @@ export default function CapabilitiesSection() {
                                                 }`}
                                             />
                                             <span
-                                                className={`text-h5 tracking-h5 font-bold transition-colors duration-500 ${
+                                                className={`text-p4 lg:text-h5 tracking-h5 font-bold transition-colors duration-500 ${
                                                     isActive ? "text-white" : "text-n2"
                                                 }`}
                                             >
@@ -178,27 +192,6 @@ export default function CapabilitiesSection() {
                                 })}
                             </div>
 
-                            {/* Mobile: horizontal tabs */}
-                            <div className="md:hidden mt-4 -mx-4 px-4 overflow-x-auto no-scrollbar">
-                                <div className="flex gap-3 min-w-max">
-                                    {items.map((it, idx) => {
-                                        const isActive = idx === active;
-                                        return (
-                                            <button
-                                                key={it.key}
-                                                onClick={() => setActive(idx)}
-                                                className={`whitespace-nowrap rounded-full border px-4 py-2 text-btn2 tracking-btn2 font-semibold uppercase transition-colors duration-300 ${
-                                                    isActive
-                                                        ? "border-w10 bg-w3 text-white"
-                                                        : "border-n9 bg-transparent text-n2"
-                                                }`}
-                                            >
-                                                {it.leftTitle}
-                                            </button>
-                                        );
-                                    })}
-                                </div>
-                            </div>
                         </div>
                         {/* /RIGHT */}
                     </div>

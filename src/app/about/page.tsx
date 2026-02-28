@@ -1,9 +1,13 @@
-// src/app/about/page.tsx
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import Button from "@/components/ui/Button";
 import CTASection from "@/components/sections/CTASection";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Learn about Marshall Defense — a trusted B2B military and sporting goods supplier serving defense, law enforcement, and commercial partners worldwide.",
+};
 
 /* ── Industries we serve ── */
 const industries = [

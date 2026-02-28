@@ -6,7 +6,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PRODUCTS, CATEGORIES } from "@/lib/data";
-import Button from "@/components/ui/Button";
 import CTASection from "@/components/sections/CTASection";
 
 export default function ProductsPage() {

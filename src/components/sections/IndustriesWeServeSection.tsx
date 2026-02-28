@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useRef } from "react";
+import { clamp01 } from "@/lib/utils";
 
 type Card = {
     badge: string;
@@ -147,7 +148,7 @@ export default function IndustriesWeServeSection() {
         <section ref={wrapRef} className="relative overflow-x-clip">
             <div
                 ref={stickyRef}
-                className="sticky top-[120px] bottom-[120px] h-[100vh] overflow-hidden"
+                className="sticky top-[120px] bottom-[80px] lg:bottom-[120px] h-[100vh] overflow-hidden"
             >
                 <Image
                     src="/images/industries-we-serve-section-background.webp"
@@ -159,10 +160,10 @@ export default function IndustriesWeServeSection() {
 
                 <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#000_0%,rgba(0,0,0,0)_32%,rgba(0,0,0,0)_72%,#000_100%)]" />
 
-                <div className="relative z-10 h-full flex flex-col justify-center">
+                <div className="relative z-10 h-full flex flex-col justify-center py-[80px] lg:py-0">
                     <div
                         ref={containerRef}
-                        className="max-w-7xl mx-auto px-4 md:px-8 pt-10 md:pt-12 text-center"
+                        className="max-w-7xl mx-auto px-4 md:px-8 md:pt-12 text-center"
                     >
                         <div className="inline-flex items-center gap-1 uppercase">
                             <span className="text-n2 text-p3 tracking-p font-normal">[</span>
@@ -174,12 +175,11 @@ export default function IndustriesWeServeSection() {
 
                         <h3 className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white">
                             Providing A vast Array of Defense
-                            <br />
                             Firearms and Ammunitions
                         </h3>
                     </div>
 
-                    <div className="mt-12 mb-48">
+                    <div className="mt-4 mb-0 md:mt-12 md:mb-48">
                         <div className="w-full">
                             <div
                                 ref={railRef}
@@ -234,6 +234,3 @@ export default function IndustriesWeServeSection() {
     );
 }
 
-function clamp01(n: number) {
-    return Math.max(0, Math.min(1, n));
-}

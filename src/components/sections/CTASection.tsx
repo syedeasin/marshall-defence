@@ -64,7 +64,7 @@ export default function CTASection({
                           <Link
                               href={primaryHref}
                               className="inline-flex items-center justify-center rounded-full bg-primary text-white uppercase font-semibold
-                           text-btn2 tracking-btn2 py-[18px] px-7 hover:opacity-90 transition-opacity w-full sm:w-auto"
+                           text-btn2 md:text-btn1 tracking-btn2 md:tracking-btn1 py-[18px] px-7 hover:opacity-90 transition-opacity w-full sm:w-auto"
                           >
                               {primaryLabel}
                           </Link>
@@ -73,7 +73,7 @@ export default function CTASection({
                           <Link
                               href={secondaryHref}
                               className="inline-flex items-center justify-center rounded-full bg-white text-black uppercase font-semibold
-                           text-btn2 tracking-btn2 py-[18px] px-7 hover:bg-n1 transition-colors w-full sm:w-auto"
+                           text-btn2 md:text-btn1 tracking-btn2 md:tracking-btn1 py-[18px] px-7 hover:bg-n1 transition-colors w-full sm:w-auto"
                           >
                               {secondaryLabel}
                           </Link>

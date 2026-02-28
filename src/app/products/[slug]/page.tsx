@@ -1,4 +1,4 @@
-// src/app/products/[slug]/page.tsx
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +8,25 @@ import Button from "@/components/ui/Button";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const product = PRODUCTS.find((p) => p.slug === slug);
+  if (!product) return {};
+  return {
+    title: product.name,
+    description: product.description,
+    openGraph: {
+      title: `${product.name} | Marshall Defense`,
+      description: product.description,
+      images: [{ url: product.image, alt: product.name }],
+    },
+  };
 }
 
 // ✅ Next.js 15+/16: params is a Promise and must be awaited
