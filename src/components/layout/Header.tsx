@@ -7,11 +7,11 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import Button from "@/components/ui/Button";
 
 const navLinks = [
-    { label: "Home", href: "/", active: true },
-    { label: "About Us", href: "/about", active: false },
-    { label: "Products", href: "/products", active: false },
-    { label: "Energetics", href: "/energetics", active: false },
-    { label: "Contact Us", href: "/contact", active: false },
+    { label: "Home", href: "/" },
+    { label: "About Us", href: "/about" },
+    { label: "Products", href: "/products" },
+    { label: "Energetics", href: "/energetics" },
+    { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Header() {
@@ -44,28 +44,19 @@ export default function Header() {
 
                     {/* Desktop Nav */}
                     <nav className="hidden md:flex items-center gap-10">
-                        {navLinks.map((l) =>
-                            l.active ? (
-                                <Link
-                                    key={l.href}
-                                    href={l.href}
-                                    className="text-white text-p4 tracking-p font-normal transition-colors hover:opacity-80"
-                                >
-                                    {l.label}
-                                </Link>
-                            ) : (
-                                <span
-                                    key={l.href}
-                                    className="text-white text-p4 tracking-p font-normal opacity-40 cursor-not-allowed"
-                                >
-                                    {l.label}
-                                </span>
-                            )
-                        )}
+                        {navLinks.map((l) => (
+                            <Link
+                                key={l.href}
+                                href={l.href}
+                                className="text-white text-p4 tracking-p font-normal transition-opacity hover:opacity-80"
+                            >
+                                {l.label}
+                            </Link>
+                        ))}
                     </nav>
 
                     {/* Desktop CTA */}
-                    <div className="hidden md:block opacity-40 cursor-not-allowed pointer-events-none">
+                    <div className="hidden md:block">
                         <Button variant="glass" size="lg" href="/contact">
                             Request a Quote
                         </Button>

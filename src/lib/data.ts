@@ -1,11 +1,13 @@
+// src/lib/data.ts
+
 export const CATEGORIES = [
   "All Products",
-  "Firearms",
+  "Sporting and Hunting",
+  "Ballistic Apparel",
   "Ammunition",
-  "Defense Apparel",
-  "Tactical Supplies",
-  "Optics",
-  "Communications",
+  "Military",
+  "Accessories",
+  "Components",
 ];
 
 export interface Product {
@@ -14,30 +16,473 @@ export interface Product {
   name: string;
   category: string;
   image: string;
+  gallery: string[];
   description: string;
   specs: { label: string; value: string }[];
   features: string[];
+  pdfs: { label: string; url: string }[];
 }
 
 export const PRODUCTS: Product[] = [
-  { id: "1", slug: "m4a1-carbine", name: "M4A1 Carbine", category: "Firearms", image: "https://placehold.co/600x400/0a0a0a/333?text=M4A1+Carbine", description: "The M4A1 Carbine is a lightweight, air-cooled, gas-operated, magazine-fed assault rifle ideal for military and law enforcement operations.", specs: [{ label: "Caliber", value: "5.56x45mm NATO" }, { label: "Weight", value: "3.0 kg" }, { label: "Barrel Length", value: "370mm" }, { label: "Action", value: "Gas-operated" }], features: ["Full-auto capable", "MIL-STD-1913 rail", "Adjustable stock", "Night vision compatible"] },
-  { id: "2", slug: "glock-17-gen5", name: "Glock 17 Gen5", category: "Firearms", image: "https://placehold.co/600x400/0a0a0a/333?text=Glock+17+Gen5", description: "The Glock 17 Gen5 is a striker-fired semi-automatic pistol renowned for reliability and accuracy used globally by law enforcement.", specs: [{ label: "Caliber", value: "9x19mm Parabellum" }, { label: "Weight", value: "0.625 kg" }, { label: "Barrel Length", value: "114mm" }, { label: "Capacity", value: "17+1" }], features: ["Ambidextrous slide stop", "Flared magazine well", "nDLC finish", "Improved trigger"] },
-  { id: "3", slug: "5-56-nato-ammo", name: "5.56 NATO Ammunition", category: "Ammunition", image: "https://placehold.co/600x400/0a0a0a/333?text=5.56+NATO+Ammo", description: "High-performance 5.56x45mm NATO ammunition designed for superior accuracy and terminal performance in combat conditions.", specs: [{ label: "Caliber", value: "5.56x45mm" }, { label: "Bullet Weight", value: "62gr" }, { label: "Muzzle Velocity", value: "2970 fps" }, { label: "Packaging", value: "1000 rounds" }], features: ["Green tip penetrator", "Brass case", "Waterproof primer", "Consistent lot accuracy"] },
-  { id: "4", slug: "level-iv-plate-carrier", name: "Level IV Plate Carrier", category: "Defense Apparel", image: "https://placehold.co/600x400/0a0a0a/333?text=Plate+Carrier", description: "NIJ Level IV certified plate carrier vest providing maximum ballistic protection for military and law enforcement personnel.", specs: [{ label: "Protection Level", value: "NIJ IV" }, { label: "Weight", value: "8.5 lbs" }, { label: "Material", value: "1000D Cordura" }, { label: "Sizes", value: "S/M/L/XL" }], features: ["Plate pockets front/rear", "MOLLE webbing", "Quick-release system", "Hydration compatible"] },
-  { id: "5", slug: "acog-4x32", name: "ACOG 4x32 Scope", category: "Optics", image: "https://placehold.co/600x400/0a0a0a/333?text=ACOG+4x32", description: "Battle-proven Advanced Combat Optical Gunsight providing 4x magnification with illuminated BDC reticle.", specs: [{ label: "Magnification", value: "4x" }, { label: "Objective Lens", value: "32mm" }, { label: "Reticle", value: "BDC for 5.56" }, { label: "Weight", value: "397g" }], features: ["Tritium/fiber illumination", "1913 Picatinny mount", "BAC reticle", "Waterproof/fogproof"] },
-  { id: "6", slug: "harris-prc-152a", name: "Harris PRC-152A Radio", category: "Communications", image: "https://placehold.co/600x400/0a0a0a/333?text=PRC-152A+Radio", description: "Multiband handheld tactical radio supporting voice and data communications across a wide frequency range.", specs: [{ label: "Frequency", value: "30-512 MHz" }, { label: "Power", value: "5W" }, { label: "Battery Life", value: "12h" }, { label: "Weight", value: "0.6 kg" }], features: ["Type 1 encryption", "Satellite communications", "GPS receiver", "Bluetooth capable"] },
-  { id: "7", slug: "tactical-combat-boot", name: "Tactical Combat Boot", category: "Defense Apparel", image: "https://placehold.co/600x400/0a0a0a/333?text=Combat+Boot", description: "Lightweight tactical combat boot designed for extended field operations with superior ankle support.", specs: [{ label: "Upper", value: "1000D Nylon/Leather" }, { label: "Sole", value: "Vibram" }, { label: "Weight", value: "1.1 kg/pair" }, { label: "Sizes", value: "5-15 (US)" }], features: ["Waterproof membrane", "Flame resistant", "Antimicrobial lining", "Speed lacing"] },
-  { id: "8", slug: "m67-fragmentation-grenade", name: "M67 Fragmentation Grenade", category: "Ammunition", image: "https://placehold.co/600x400/0a0a0a/333?text=M67+Grenade", description: "The M67 fragmentation grenade is a standard-issue defensive/offensive hand grenade for military operations.", specs: [{ label: "Weight", value: "0.4 kg" }, { label: "Fill", value: "Composition B" }, { label: "Delay", value: "4-5 seconds" }, { label: "Burst Radius", value: "15m" }], features: ["Steel body", "Spoon safety mechanism", "Color coded", "Mil-spec certified"] },
-  { id: "9", slug: "eotech-exps3", name: "EOTech EXPS3 Holographic", category: "Optics", image: "https://placehold.co/600x400/0a0a0a/333?text=EOTech+EXPS3", description: "Premium holographic weapon sight offering 1x magnification with 68 MOA ring/1 MOA dot reticle.", specs: [{ label: "Magnification", value: "1x" }, { label: "Window Size", value: "30x23mm" }, { label: "Battery", value: "CR123A" }, { label: "Weight", value: "226g" }], features: ["Night vision compatible", "Submersible to 10ft", "Side-loading battery", "20 brightness settings"] },
-  { id: "10", slug: "multicam-ghillie-suit", name: "MultiCam Ghillie Suit", category: "Defense Apparel", image: "https://placehold.co/600x400/0a0a0a/333?text=Ghillie+Suit", description: "Professional 3D leaf ghillie suit in MultiCam pattern for superior concealment in mixed terrain.", specs: [{ label: "Pattern", value: "MultiCam" }, { label: "Material", value: "Jute/Burlap blend" }, { label: "Coverage", value: "Full body" }, { label: "Weight", value: "2.3 kg" }], features: ["Fire retardant", "Reinforced knee/elbow", "Drag harness", "Customizable foliage"] },
-  { id: "11", slug: "m240b-machine-gun", name: "M240B Machine Gun", category: "Firearms", image: "https://placehold.co/600x400/0a0a0a/333?text=M240B", description: "Gas-operated, air-cooled, belt-fed medium machine gun providing sustained fire support.", specs: [{ label: "Caliber", value: "7.62x51mm NATO" }, { label: "Weight", value: "12.5 kg" }, { label: "Rate of Fire", value: "650-950 rpm" }, { label: "Range", value: "3725m" }], features: ["Sustained fire", "Tripod and bipod mount", "Quick-change barrel", "Picatinny rail"] },
-  { id: "12", slug: "sordin-supreme-pro", name: "Sordin Supreme Pro X", category: "Tactical Supplies", image: "https://placehold.co/600x400/0a0a0a/333?text=Sordin+Supreme", description: "Active hearing protection with electronic sound amplification and communication input for tactical ops.", specs: [{ label: "NRR", value: "25 dB" }, { label: "Amplification", value: "4x (12 dB)" }, { label: "Battery", value: "2x AAA" }, { label: "Weight", value: "265g" }], features: ["Auto compression", "3.5mm audio input", "Gel ear seals", "Foldable design"] },
-  { id: "13", slug: "mk19-grenade-launcher", name: "MK19 Grenade Launcher", category: "Firearms", image: "https://placehold.co/600x400/0a0a0a/333?text=MK19+Launcher", description: "Fully automatic belt-fed grenade launcher for vehicle-mounted or tripod use.", specs: [{ label: "Caliber", value: "40x53mm" }, { label: "Weight", value: "34 kg" }, { label: "Rate of Fire", value: "325-375 rpm" }, { label: "Range", value: "2200m" }], features: ["Vehicle mountable", "Tripod compatible", "Blowback operated", "Belt-fed"] },
-  { id: "14", slug: "surefire-m600df", name: "SureFire M600DF Scout", category: "Tactical Supplies", image: "https://placehold.co/600x400/0a0a0a/333?text=SureFire+Scout", description: "Dual-fuel weaponlight delivering 1500 lumens with multiple power settings for tactical use.", specs: [{ label: "Output", value: "1500/300 lumens" }, { label: "Runtime", value: "1.5/7h" }, { label: "Beam Distance", value: "265m" }, { label: "Weight", value: "96g" }], features: ["Picatinny mount", "Dual fuel", "TIR lens", "Mil-Spec anodized"] },
-  { id: "15", slug: "pvs-14-nvg", name: "AN/PVS-14 Night Vision", category: "Optics", image: "https://placehold.co/600x400/0a0a0a/333?text=PVS-14+NVG", description: "Third-generation monocular night vision device for night operations.", specs: [{ label: "Generation", value: "Gen III" }, { label: "Magnification", value: "1x" }, { label: "Detection Range", value: "300m" }, { label: "Battery Life", value: "40h" }], features: ["Head mount compatible", "Weapon mountable", "IR illuminator", "Auto shut-off"] },
-  { id: "16", slug: "fast-ballistic-helmet", name: "FAST Ballistic Helmet", category: "Defense Apparel", image: "https://placehold.co/600x400/0a0a0a/333?text=FAST+Helmet", description: "NIJ IIIA rated high-cut tactical helmet with NVG shroud and rail system.", specs: [{ label: "Protection", value: "NIJ IIIA" }, { label: "Shell", value: "UHMWPE" }, { label: "Weight", value: "0.9 kg" }, { label: "Sizes", value: "S/M/L/XL" }], features: ["NVG shroud", "ARC rail system", "BOA retention", "Pad suspension"] },
-  { id: "17", slug: "cat-gen7-tourniquet", name: "CAT Gen-7 Tourniquet", category: "Tactical Supplies", image: "https://placehold.co/600x400/0a0a0a/333?text=CAT+Tourniquet", description: "The most widely used tourniquet in the U.S. military for hemorrhage control.", specs: [{ label: "Application Width", value: "1.5 inch" }, { label: "Max Circumference", value: "8 inch" }, { label: "Windlass", value: "Reinforced plastic" }, { label: "Weight", value: "65g" }], features: ["One-handed application", "Time indicator", "Free-moving band", "Locking mechanism"] },
-  { id: "18", slug: "m18-smoke-grenade", name: "M18 Smoke Grenade", category: "Ammunition", image: "https://placehold.co/600x400/0a0a0a/333?text=M18+Smoke", description: "Military-grade smoke grenade for signaling, obscuration, and target marking.", specs: [{ label: "Burn Time", value: "50-90 seconds" }, { label: "Colors", value: "Red/Green/Yellow/Violet" }, { label: "Weight", value: "0.539 kg" }, { label: "Diameter", value: "66mm" }], features: ["High visibility smoke", "Spoon safety", "Pull-ring fuze", "Mil-Spec"] },
-  { id: "19", slug: "safariland-ankle-holster", name: "Safariland 295 Ankle Holster", category: "Tactical Supplies", image: "https://placehold.co/600x400/0a0a0a/333?text=Ankle+Holster", description: "Concealable ankle holster with self-contained retention strap for compact firearms.", specs: [{ label: "Material", value: "SafariLaminate" }, { label: "Closure", value: "Retention strap" }, { label: "Compatibility", value: "Glock 17/19/23/26" }, { label: "Leg Sizes", value: "S/M/L" }], features: ["Suede lining", "Neoprene leg band", "Velcro leg strap", "Ambidextrous"] },
-  { id: "20", slug: "511-rush72-backpack", name: "5.11 RUSH72 Backpack", category: "Tactical Supplies", image: "https://placehold.co/600x400/0a0a0a/333?text=RUSH72+Pack", description: "Large-capacity tactical backpack for 72-hour operations with MOLLE webbing.", specs: [{ label: "Capacity", value: "55L" }, { label: "Material", value: "1050D Nylon" }, { label: "Weight", value: "1.9 kg" }, { label: "Dimensions", value: "61x36x30cm" }], features: ["MOLLE webbing", "Sleeping bag compartment", "Hydration compatible", "Admin panel"] },
+  // ─── 1. Shotguns & Rifles ──────────────────────────────────
+  {
+    id: "1",
+    slug: "shotguns-rifles",
+    name: "Shotguns & Rifles",
+    category: "Sporting and Hunting",
+    image: "/images/products/shotguns-rifles.webp",
+    gallery: [
+      "/images/products/shotguns-rifles/gallery-1.webp",
+      "/images/products/shotguns-rifles/gallery-2.webp",
+      "/images/products/shotguns-rifles/gallery-3.webp",
+    ],
+    description:
+        "Invader Semi-Auto Shotgun: Action: Semi-Auto Shotgun, Vertical Magazine System, Gas Operated. Gauge: 12 Gauge. Chamber: 3\". Stock: Tactical Stock. Barrel: 4140 stainless steel drilled rod. Inner surface is hard white chromium plated, outer surface is black chromium plated. Barrel Length: 18\". Magazine Capacity: 5 rounds. Choke: Inner 5 mobile choke. Overall Length: 36.22\". Average Weight: 8.8 Lbs. Optional Colors: Black (ET4IN-11400B) & Red (ET4IN-11401R).",
+    specs: [
+      { label: "Action", value: "Semi-Auto Shotgun" },
+      { label: "Gauge", value: "12 Gauge" },
+      { label: "Chamber", value: "3\"" },
+      { label: "Stock", value: "Tactical Stock" },
+      { label: "Barrel", value: "4140 stainless steel, chromium plated" },
+      { label: "Barrel Length", value: "18\"" },
+      { label: "Magazine Capacity", value: "5 rounds" },
+      { label: "Choke", value: "Inner 5 mobile choke" },
+      { label: "Overall Length", value: "36.22\"" },
+      { label: "Average Weight", value: "8.8 Lbs" },
+    ],
+    features: [
+      "Vertical Magazine System",
+      "Gas Operated",
+      "Hard white chromium plated inner surface",
+      "Black chromium plated outer surface",
+      "Optional Colors: Black & Red",
+    ],
+    pdfs: [
+      { label: "MD AK12 CAT", url: "/pdfs/products/md-ak12-cat.pdf" },
+      { label: "Shotguns Rifles", url: "/pdfs/products/shotguns-rifles.pdf" },
+      { label: "Shotgun Rifles Series 3", url: "/pdfs/products/shotgun-rifles-series-3.pdf" },
+    ],
+  },
+
+  // ─── 2. Shotgun Ammunition ─────────────────────────────────
+  {
+    id: "2",
+    slug: "shotgun-ammunition",
+    name: "Shotgun Ammunition",
+    category: "Sporting and Hunting",
+    image: "/images/products/shotgun-ammunition.webp",
+    gallery: [
+      "/images/products/shotgun-ammunition/gallery-1.webp",
+      "/images/products/shotgun-ammunition/gallery-2.webp",
+      "/images/products/shotgun-ammunition/gallery-3.webp",
+    ],
+    description:
+        "Our inquiry: 9mm fully loaded cartridges FMJ brass case boxer primer, 5.56×45 NATO fully loaded cartridges FMJ, .40 ACP fully loaded cartridges FMJ brass case boxer primer, .45 ACP fully loaded cartridges FMJ brass case boxer primer, .22LR fully loaded cartridges FMJ brass case boxer primer, .380 auto fully loaded cartridges FMJ brass case, .223 remington, .308 FMJ, boxer primers. Notes: steel is acceptable for casings if it is the only option but needs to be priced accordingly for steel and not brass – standard grain for each caliber is acceptable, we want to know what is available or purchase first.",
+    specs: [
+      { label: "9mm", value: "FMJ brass case boxer primer" },
+      { label: "5.56×45 NATO", value: "Fully loaded cartridges FMJ" },
+      { label: ".40 ACP", value: "FMJ brass case boxer primer" },
+      { label: ".45 ACP", value: "FMJ brass case boxer primer" },
+      { label: ".22LR", value: "FMJ brass case boxer primer" },
+      { label: ".380 Auto", value: "FMJ brass case" },
+      { label: ".223 Remington", value: "Available" },
+      { label: ".308 FMJ", value: "Available" },
+    ],
+    features: [
+      "Brass case standard",
+      "Steel casings available at adjusted pricing",
+      "Standard grain per caliber",
+      "Boxer primers",
+      "Multiple caliber options",
+    ],
+    pdfs: [
+      { label: "Product Brochure", url: "/pdfs/products/shotgun-ammunition-brochure.pdf" },
+    ],
+  },
+
+  // ─── 3. Protection Vests & Helmets ─────────────────────────
+  {
+    id: "3",
+    slug: "protection-vests-helmets",
+    name: "Protection Vests & Helmets",
+    category: "Ballistic Apparel",
+    image: "/images/products/protection-vests-helmets.webp",
+    gallery: [
+      "/images/products/protection-vests-helmets/gallery-1.webp",
+      "/images/products/protection-vests-helmets/gallery-2.webp",
+      "/images/products/protection-vests-helmets/gallery-3.webp",
+      "/images/products/protection-vests-helmets/gallery-4.webp",
+      "/images/products/protection-vests-helmets/gallery-5.webp",
+      "/images/products/protection-vests-helmets/gallery-6.webp",
+      "/images/products/protection-vests-helmets/gallery-7.webp",
+      "/images/products/protection-vests-helmets/gallery-8.webp",
+      "/images/products/protection-vests-helmets/gallery-9.webp",
+      "/images/products/protection-vests-helmets/gallery-10.webp",
+      "/images/products/protection-vests-helmets/gallery-11.webp",
+      "/images/products/protection-vests-helmets/gallery-12.webp",
+    ],
+    description:
+        "Customized solutions for your protection. Marshall Defense is one of the most technologically advanced manufacturers of protective equipment in the world. Marshall Defense offers with its team more than 25 years of experience in the ballistic sector. We are experts in technical development, sales, and marketing. We invest all our experience to always develop the best product for our customers. We provide the most innovative armor designs to be used for personal protection equipment and platform protection.",
+    specs: [],
+    features: [
+      "Body Armor",
+      "Ballistic Insert Plates",
+      "Ballistic Helmets",
+      "Ballistic Shields",
+      "Add-on Armor Kits",
+      "Modular Kits",
+      "Spall Liners",
+      "Ballistic Blankets",
+    ],
+    pdfs: [
+      { label: "Marshall Defense Vests", url: "/pdfs/products/marshall-defense-vests.pdf" },
+      { label: "ME CS-QT 2022 039 Brochure", url: "/pdfs/products/me-cs-qt-2022-039-brochure.pdf" },
+      { label: "Personal Protection Equipment", url: "/pdfs/products/personal-protection-equipment.pdf" },
+    ],
+  },
+
+  // ─── 4. Night Vision & Optical Gear ────────────────────────
+  {
+    id: "4",
+    slug: "night-vision-optical-gear",
+    name: "Night Vision & Optical Gear",
+    category: "Military",
+    image: "/images/products/night-vision-optical-gear.webp",
+    gallery: [],
+    description:
+        "Putting more emphasis on testing each and every aspect of the system before its release to the End User. Extensive tests are performed at all stages of production to meet and exceed MIL-STD/MIL-SPEC requirements. Spending 30% of our time testing parts and components, followed by 40% testing compatibility and functionality mid-production, and lastly 30% is spent calibrating and performing post-production tests. With emphasis on quality and reliability – the equipment of our clients needs to support them for any operation, in any setting, because there is no room for error. These devices are manufactured to reflect that philosophy: We offer an unmatched 7-Year Limited Warranty, industry leading specifications with no limitations for thermal cores and intensifier tubes.",
+    specs: [],
+    features: [
+      "MIL-STD/MIL-SPEC compliant",
+      "7-Year Limited Warranty",
+      "30% parts & components testing",
+      "40% compatibility & functionality testing",
+      "30% calibration & post-production testing",
+      "No limitations for thermal cores",
+      "No limitations for intensifier tubes",
+    ],
+    pdfs: [
+      { label: "Product Brochure", url: "/pdfs/products/night-vision-optical-gear-brochure.pdf" },
+    ],
+  },
+
+  // ─── 5. Pistols ────────────────────────────────────────────
+  {
+    id: "5",
+    slug: "pistols",
+    name: "Pistols",
+    category: "Military",
+    image: "/images/products/pistols.webp",
+    gallery: [
+      "/images/products/pistols/gallery-1.webp",
+      "/images/products/pistols/gallery-2.webp",
+      "/images/products/pistols/gallery-3.webp",
+      "/images/products/pistols/gallery-4.webp",
+      "/images/products/pistols/gallery-5.webp",
+      "/images/products/pistols/gallery-6.webp",
+    ],
+    description:
+        "X-Calibur Match: The X-Calibur is our well-known, out-of-the-box competition-ready, flagship. We offer to tow new modifications to further accommodate to needs of our customers, who asked for heavier versions as well as for the option to mount a red dot sight, in order to allow them to use their favorite X-Calibur for more and more disciplines in shooting sport. There are two new options available – Match and Match CO, standing for carrying Optics. They both possess an additional weight of 350g in form of a massive steel dust cover, including a standard Picatinny rail for any accessories shooter may want to attach to his X-Calibur. Additionally, the CO version slide is milled to accept a mounting base for a red dot sight. The red dot mount base can be replaced by micrometric rear sight if needed.",
+    specs: [],
+    features: [
+      "Competition-ready out of the box",
+      "Match and Match CO versions available",
+      "Additional 350g steel dust cover",
+      "Standard Picatinny rail",
+      "CO version accepts red dot sight mounting base",
+      "Micrometric rear sight option",
+    ],
+    pdfs: [
+      { label: "High Quality Pistols", url: "/pdfs/products/high-quality-pistols.pdf" },
+      { label: "Variations Brochure", url: "/pdfs/products/pistols-variations-brochure.pdf" },
+    ],
+  },
+
+  // ─── 6. Rifles & Sniper Rifles ─────────────────────────────
+  {
+    id: "6",
+    slug: "rifles-sniper-rifles",
+    name: "Rifles & Sniper Rifles",
+    category: "Military",
+    image: "/images/products/rifles-sniper-rifles.webp",
+    gallery: [
+      "/images/products/rifles-sniper-rifles/gallery-1.webp",
+      "/images/products/rifles-sniper-rifles/gallery-2.webp",
+      "/images/products/rifles-sniper-rifles/gallery-3.webp",
+    ],
+    description:
+        "MFR56, designed by SYSTEM DEFENCE, is produced in System Defense factories in Turkey. The MFR56 (MULTIFACTIONAL RIFLE) 5.56x45mm Caliber is a multifunctional machine gun. It can be produced as 2 different systems as OPEN BOLT and CLOSED BOLT due to the references of country-based law enforcement agencies. Manufactured by SYSTEM DEFENCE, the MFR56 is specially designed for local operations. In areas and campuses that restrict the movement and maneuvering capabilities of security units, the FR56 transforms with its dimensions, weight, and functions.",
+    specs: [
+      { label: "Caliber", value: "5.56x45mm" },
+      { label: "Type", value: "Multifunctional Machine Gun" },
+      { label: "Systems", value: "Open Bolt & Closed Bolt" },
+      { label: "Manufacturer", value: "System Defence (Turkey)" },
+    ],
+    features: [
+      "Multifunctional design",
+      "Open Bolt and Closed Bolt configurations",
+      "Designed for local operations",
+      "Compact dimensions for restricted areas",
+      "Lightweight and maneuverable",
+    ],
+    pdfs: [
+      { label: "Rifles Review Update", url: "/pdfs/products/rifles-review-update.pdf" },
+      { label: "Sales Sheet AK-47", url: "/pdfs/products/sales-sheet-ak-47.pdf" },
+      { label: "Rifle Specs", url: "/pdfs/products/rifle-specs.pdf" },
+      { label: "MD-AKM Catalog", url: "/pdfs/products/md-akm-catalog.pdf" },
+      { label: "Tactical Shotguns", url: "/pdfs/products/tactical-shotguns.pdf" },
+      { label: "Marshal Defense Malyuk", url: "/pdfs/products/marshal-defense-malyuk.pdf" },
+      { label: "MD Rifles Sniper", url: "/pdfs/products/md-rifles-sniper.pdf" },
+      { label: "MD Kalashnikov", url: "/pdfs/products/md-kalashnikov.pdf" },
+    ],
+  },
+
+  // ─── 7. Flash Bang Hand Grenades ───────────────────────────
+  {
+    id: "7",
+    slug: "flash-bang-hand-grenades",
+    name: "Flash Bang Hand Grenades",
+    category: "Military",
+    image: "/images/products/flash-bang-hand-grenades.webp",
+    gallery: [],
+    description:
+        "1. There will be no particles that will create a shrapnel effect in the flashbangs, and there will be no fragmentation after the function. 2. Flashbangs shall be disposable, single burst, and hand throw type. 3. Light and sound effects will occur instantly with the firing of the flashbang. 4. Flashbangs shall consist of a steel or aluminum body and include pyrotechnic components and an ignition mechanism. 5. Ignition of the flashbang will occur by means of a pyrotechnic retarder and by pulling the pin.",
+    specs: [
+      { label: "Type", value: "Disposable, single burst, hand throw" },
+      { label: "Body", value: "Steel or aluminum" },
+      { label: "Ignition", value: "Pyrotechnic retarder, pin-pull" },
+      { label: "Effects", value: "Light and sound, instant" },
+    ],
+    features: [
+      "No shrapnel effect",
+      "No fragmentation after function",
+      "Disposable single burst",
+      "Hand throw type",
+      "Steel or aluminum body",
+      "Pyrotechnic ignition mechanism",
+    ],
+    pdfs: [
+      { label: "Product Brochure", url: "/pdfs/products/flash-bang-hand-grenades-brochure.pdf" },
+    ],
+  },
+
+  // ─── 8. Military Multifunction Shovel ──────────────────────
+  {
+    id: "8",
+    slug: "military-multifunction-shovel",
+    name: "Military Multifunction Shovel",
+    category: "Military",
+    image: "/images/products/military-multifunction-shovel.webp",
+    gallery: [
+      "/images/products/military-multifunction-shovel/gallery-1.webp",
+      "/images/products/military-multifunction-shovel/gallery-2.webp",
+    ],
+    description:
+        "Military multifunction shovel with comprehensive accessory set for field operations.",
+    specs: [
+      { label: "Total Length", value: "78cm" },
+      { label: "Shovel Head Length", value: "16.5cm" },
+      { label: "Shovel Head Width", value: "12.5cm" },
+      { label: "Total Weight (incl. accessories)", value: "1045g" },
+    ],
+    features: [
+      "Shovelhead x 1",
+      "Handle end x 1",
+      "Handle section x 2",
+      "Knife x 1",
+      "Screwdriver bit x 1",
+      "End lid x 1",
+      "Chipper x 1",
+    ],
+    pdfs: [
+      { label: "Product Brochure", url: "/pdfs/products/military-multifunction-shovel-brochure.pdf" },
+    ],
+  },
+
+  // ─── 9. Surveillance & Optical ─────────────────────────────
+  {
+    id: "9",
+    slug: "surveillance-optical",
+    name: "Surveillance & Optical",
+    category: "Military",
+    image: "/images/products/surveillance-optical.webp",
+    gallery: [],
+    description:
+        "BIN-3 is a passive binocular with adjustable eye distance that can be operated on a single AA battery and can be used as handheld or helmet-mounted night vision binocular/goggles.",
+    specs: [
+      { label: "Length", value: "105-115mm (4.13-4.53 in)" },
+      { label: "Width", value: "93mm (3.66 in)" },
+      { label: "Height", value: "82mm (3.23 in)" },
+      { label: "Weight", value: "600 grams (1.32 lbs) excl. battery" },
+    ],
+    features: [
+      "Lightweight handheld and clip-on helmet design",
+      "Optional manual gain adjustment at different light levels",
+      "Infrared illumination",
+      "Optional automatic brightness protection",
+      "Easy to adjust",
+      "Low battery voltage and IR illumination on warnings",
+    ],
+    pdfs: [
+      { label: "Product Brochure", url: "/pdfs/products/surveillance-optical-brochure.pdf" },
+    ],
+  },
+
+  // ─── 10. Propellants ───────────────────────────────────────
+  {
+    id: "10",
+    slug: "propellants",
+    name: "Propellants",
+    category: "Components",
+    image: "/images/products/propellants.webp",
+    gallery: [
+      "/images/products/propellants/gallery-1.webp",
+      "/images/products/propellants/gallery-2.webp",
+      "/images/products/propellants/gallery-3.webp",
+    ],
+    description: "Shotshell Ammunition propellant powders available in multiple formulations for various ammunition applications.",
+    specs: [],
+    features: [
+      "Single base powders – Flake",
+      "Spherical Powders",
+      "Single base – tubular powders",
+      "Extruded-modified tubular powders",
+      "Rifle (Carbine) Ammunition",
+      "Spherical powders",
+    ],
+    pdfs: [
+      { label: "Product Brochure", url: "/pdfs/products/propellants-brochure.pdf" },
+    ],
+  },
+
+  // ─── 11. Primers ───────────────────────────────────────────
+  {
+    id: "11",
+    slug: "primers",
+    name: "Primers",
+    category: "Components",
+    image: "/images/products/primers.webp",
+    gallery: [
+      "/images/products/primers/gallery-1.webp",
+      "/images/products/primers/gallery-2.webp",
+      "/images/products/primers/gallery-3.webp",
+    ],
+    description:
+        "Our primers are 10k pcs per box. – 2.1 Million per pallet. Over 18 million are available as of right now. SPP and SRP Primers – Shipped monthly. The CCI primers are boxes of 10k pcs per box. – 2.1 Million per pallet. Over 5 million are available as of right now. CCI Primers – Shipped monthly. First delivery in December. MOQ – 1 container (16.8MM primers).",
+    specs: [
+      { label: "Box Size", value: "10k pcs per box" },
+      { label: "Pallet Quantity", value: "2.1 Million per pallet" },
+      { label: "SPP/SRP Availability", value: "Over 18 million" },
+      { label: "CCI Availability", value: "Over 5 million" },
+      { label: "MOQ", value: "1 container (16.8MM primers)" },
+      { label: "Shipping", value: "Monthly" },
+    ],
+    features: [
+      "SPP and SRP Primers available",
+      "CCI Primers available",
+      "Monthly shipping schedule",
+      "Bulk container quantities",
+    ],
+    pdfs: [
+      { label: "Product Brochure", url: "/pdfs/products/primers-brochure.pdf" },
+    ],
+  },
+
+  // ─── 12. Cleaning Kit ──────────────────────────────────────
+  {
+    id: "12",
+    slug: "cleaning-kit",
+    name: "Cleaning Kit",
+    category: "Accessories",
+    image: "/images/products/cleaning-kit.webp",
+    gallery: [
+      "/images/products/cleaning-kit/gallery-1.webp",
+      "/images/products/cleaning-kit/gallery-2.webp",
+      "/images/products/cleaning-kit/gallery-3.webp",
+    ],
+    description: "Comprehensive firearm cleaning and maintenance product line covering all weapon types and applications.",
+    specs: [],
+    features: [
+      "Gun Lubricants",
+      "Gun Cleaners",
+      "Ultrasonic Products",
+      "Airsoft / Airgun Lubricants",
+      "Paintball",
+      "Black powder",
+      "Specialty Products",
+      "Cleaning Kits",
+      "Delux Cleaning Kits",
+      "Tactical + LE Cleaning Kits",
+      "Cleaning Accessories",
+      "Retail packaging",
+      "Retail & POP Displays",
+    ],
+    pdfs: [
+      { label: "Product Brochure", url: "/pdfs/products/cleaning-kit-brochure.pdf" },
+    ],
+  },
+
+  // ─── 13. Firearm Accessories ───────────────────────────────
+  {
+    id: "13",
+    slug: "firearm-accessories",
+    name: "Firearm Accessories",
+    category: "Accessories",
+    image: "/images/products/firearm-accessories.webp",
+    gallery: [
+      "/images/products/firearm-accessories/gallery-1.webp",
+      "/images/products/firearm-accessories/gallery-2.webp",
+      "/images/products/firearm-accessories/gallery-3.webp",
+    ],
+    description: "Comprehensive range of firearm accessories covering AR, AK, and shotgun platforms.",
+    specs: [],
+    features: [
+      "AR – AK Stock Models",
+      "Handguard Models",
+      "AR – Ak Pistol Grip Models",
+      "AR – Ak Buffer Tube Models",
+      "AR – Ak Parts and Upgrades Models",
+      "AR – 15 Metal Parts",
+      "Magazines",
+      "Cases",
+      "Shotguns Stocks",
+      "Shotguns Handguards",
+    ],
+    pdfs: [
+      { label: "Product Brochure", url: "/pdfs/products/firearm-accessories-brochure.pdf" },
+    ],
+  },
+
+  // ─── 14. Tactical Apparel ──────────────────────────────────
+  {
+    id: "14",
+    slug: "tactical-apparel",
+    name: "Tactical Apparel",
+    category: "Ballistic Apparel",
+    image: "/images/products/tactical-apparel.webp",
+    gallery: [
+      "/images/products/tactical-apparel/gallery-1.webp",
+      "/images/products/tactical-apparel/gallery-2.webp",
+      "/images/products/tactical-apparel/gallery-3.webp",
+    ],
+    description:
+        "09246 / Urban Go Pack: The Urban go pack is a revolution of design. It is not just a tactical backpack. It's a Go Pack! This high quality pack has a place for everything. Padded laptop sleeve, will fit up to 15.6\" laptop. The advanced high cushion back pad and shoulder straps allow for breathability and impact reduction. Main compartment comes with document sleeve and mesh pocket. Hydration bladder compatible (bladder not included).",
+    specs: [
+      { label: "Size", value: "22\"x12\"x7\"" },
+      { label: "Capacity", value: "30-40L" },
+      { label: "Weight", value: "3.5lbs" },
+      { label: "Package", value: "660 x 40 x 46cm / 10pcs" },
+    ],
+    features: [
+      "Padded laptop sleeve (up to 15.6\")",
+      "High cushion back pad",
+      "Breathable shoulder straps",
+      "Document sleeve and mesh pocket",
+      "Hydration bladder compatible",
+      "Impact reduction design",
+    ],
+    pdfs: [
+      { label: "Product Brochure", url: "/pdfs/products/tactical-apparel-brochure.pdf" },
+    ],
+  },
 ];

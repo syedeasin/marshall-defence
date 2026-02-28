@@ -1,166 +1,401 @@
-"use client";
-import { ArrowUpRight, Flame, Zap, Target, Shield, AlertTriangle, FileText } from "lucide-react";
-import Button from "@/components/ui/Button";
+// src/app/energetics/page.tsx
+import Image from "next/image";
+import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import CTASection from "@/components/sections/CTASection";
 
-const FormSection = ({
-  topLabel,
-  title,
-  subtitle,
-  fields,
-  id,
-}: {
-  topLabel: string;
-  title: string;
-  subtitle?: string;
-  fields: { label: string; type: string; required?: boolean; options?: string[] }[];
-  id: string;
-}) => (
-  <section id={id} className="py-16 px-4 md:px-8 max-w-5xl mx-auto border-t border-white/5">
-    <span className="text-primary text-sm font-medium uppercase tracking-widest block mb-3">{topLabel}</span>
-    <h2 className="text-[40px] leading-[48px] font-bold tracking-[-0.025em] text-white mb-2">{title}</h2>
-    {subtitle && <p className="text-n3 text-[18px] leading-7 mb-8 max-w-2xl">{subtitle}</p>}
-    {!subtitle && <div className="mb-8" />}
-    <form className="glass-card rounded-xl p-8 grid grid-cols-1 md:grid-cols-2 gap-5">
-      {fields.map((f, i) => (
-        <div key={i} className={f.type === "textarea" ? "md:col-span-2" : ""}>
-          <label className="block text-n3 text-sm font-medium mb-2">{f.label}{f.required && <span className="text-primary ml-1">*</span>}</label>
-          {f.type === "select" ? (
-            <select className="w-full bg-n10 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-primary focus:outline-none">
-              <option value="">Select {f.label}</option>
-              {f.options?.map((o) => <option key={o} value={o}>{o}</option>)}
-            </select>
-          ) : f.type === "textarea" ? (
-            <textarea rows={4} className="w-full bg-n10 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-primary focus:outline-none resize-none" placeholder={f.label} />
-          ) : (
-            <input type={f.type} className="w-full bg-n10 border border-white/10 rounded-lg px-4 py-3 text-white text-sm focus:border-primary focus:outline-none" placeholder={f.label} />
-          )}
-        </div>
-      ))}
-      <div className="md:col-span-2 mt-2">
-        <Button variant="solid" size="lg" type="submit" icon={<ArrowUpRight size={18} />}>Submit Request</Button>
-      </div>
-    </form>
-  </section>
-);
+/* ═══════════════════════════════════════════════════════════════
+   TYPES
+   ═══════════════════════════════════════════════════════════════ */
+type TableRow = string[];
 
-const serviceCards = [
-  { icon: <Flame size={24} />, title: "Pyrotechnics Supply", desc: "Military-grade pyrotechnic devices for training and operational use." },
-  { icon: <Zap size={24} />, title: "Explosive Ordnance", desc: "Certified EOD equipment and training munitions for professional units." },
-  { icon: <Target size={24} />, title: "Demolition Systems", desc: "Controlled demolition systems for engineering and breaching operations." },
-  { icon: <Shield size={24} />, title: "Counter-IED Solutions", desc: "Detection, neutralization, and protection against improvised devices." },
-  { icon: <AlertTriangle size={24} />, title: "Safety & Compliance", desc: "Full regulatory support for energetics acquisition and handling." },
-  { icon: <FileText size={24} />, title: "Technical Consulting", desc: "Expert guidance on energetics selection, testing, and deployment." },
+interface DataTable {
+    headers: string[];
+    rows: TableRow[];
+}
+
+interface DataSheetSection {
+    subtitle?: string;
+    table: DataTable;
+}
+
+interface DataSheet {
+    bracketLabel: string;
+    title: string;
+    sections: DataSheetSection[];
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   TABLE COMPONENT
+   ═══════════════════════════════════════════════════════════════ */
+function TechTable({ headers, rows }: DataTable) {
+    return (
+        <div className="border border-n8 rounded-xl overflow-hidden">
+            <div className="overflow-x-auto">
+                <table className="w-full min-w-[600px]">
+                    <thead>
+                    <tr className="bg-n9">
+                        {headers.map((h, i) => (
+                            <th
+                                key={i}
+                                className={`py-4 px-6 text-p5 tracking-p font-medium text-n3 text-left ${
+                                    i === 0 ? "w-[80px] text-center" : ""
+                                } ${i < headers.length - 1 ? "border-r border-n8" : ""}`}
+                            >
+                                {h}
+                            </th>
+                        ))}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {rows.map((row, ri) => {
+                        const isSubHeader =
+                            row.length >= 2 &&
+                            row[0] === "" &&
+                            row.slice(2).every((c) => c === "");
+
+                        const rowBg = ri % 2 === 0 ? "bg-white/5" : "bg-black";
+
+                        if (isSubHeader) {
+                            return (
+                                <tr key={ri} className={`border-t border-n8 ${rowBg}`}>
+                                    <td
+                                        colSpan={headers.length}
+                                        className="py-4 px-6 text-p4 tracking-p font-semibold text-white"
+                                    >
+                                        {row[1]}
+                                    </td>
+                                </tr>
+                            );
+                        }
+
+                        return (
+                            <tr key={ri} className={`border-t border-n8 ${rowBg}`}>
+                                {row.map((cell, ci) => (
+                                    <td
+                                        key={ci}
+                                        className={`py-4 px-6 text-p5 tracking-p font-normal ${
+                                            ci === 0
+                                                ? "text-n4 text-center w-[80px]"
+                                                : ci === 1
+                                                    ? "text-n2"
+                                                    : "text-white"
+                                        } ${ci < row.length - 1 ? "border-r border-n8" : ""}`}
+                                    >
+                                        {cell}
+                                    </td>
+                                ))}
+                            </tr>
+                        );
+                    })}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DATA SHEET SECTION COMPONENT
+   ═══════════════════════════════════════════════════════════════ */
+function DataSheetBlock({ sheet }: { sheet: DataSheet }) {
+    return (
+        <section className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto">
+            {/* Bracket label */}
+            <div className="text-center mb-3">
+                <div className="inline-flex items-center gap-1 uppercase">
+                    <span className="text-n4 text-[13px] font-medium tracking-[0.12em]">[</span>
+                    <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">
+            {sheet.bracketLabel}
+          </span>
+                    <span className="text-n4 text-[13px] font-medium tracking-[0.12em]">]</span>
+                </div>
+            </div>
+
+            {/* Title */}
+            <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white text-center uppercase mb-12">
+                {sheet.title}
+            </h2>
+
+            {/* Sections */}
+            <div className="space-y-12">
+                {sheet.sections.map((section, i) => (
+                    <div key={i}>
+                        {section.subtitle && (
+                            <h3 className="text-h5 tracking-h5 font-bold text-white mb-6">
+                                {section.subtitle}
+                            </h3>
+                        )}
+                        <TechTable headers={section.table.headers} rows={section.table.rows} />
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   ALL TECHNICAL DATA
+   ═══════════════════════════════════════════════════════════════ */
+
+const tntSheet: DataSheet = {
+    bracketLabel: "TNT - Technical Data",
+    title: "Technical Data Sheet - TNT Explosive",
+    sections: [
+        {
+            table: {
+                headers: ["No.", "Technical Specification", "Range Requirements"],
+                rows: [
+                    ["1", "Outer appearance:", "Cast charges or flakes"],
+                    ["2", "Color:", "Yellow (light yellow to dark yellow)"],
+                    ["3", "Solidification point,% not less than", "80.2"],
+                    ["4", "Moisture and volatile substances, % not more than", "0.1"],
+                    ["5", "Acidity as per sulfuric acid, % not more than", "0.01"],
+                    ["6", "Insoluble matters in acetone (or benzene/ toluene) % not more than", "0.05"],
+                    ["7", "Sodium, not more than %", "0.001"],
+                    ["8", "Shelf life", "min 20 years"],
+                    ["", "TNT Flakes", ""],
+                    ["9", "Thickness of flake, average: max, mm", "0.635"],
+                    ["10", "Thickness of flake max: max, mm", "1.016"],
+                    ["", "TNT cast charges (booster)", ""],
+                    ["11", "TNT weight per each cast charge (booster), g", "400"],
+                    ["12", "Specific weight, g/cm³", "1.35 ÷ 1.61"],
+                    ["13", "Average diameter, mm", "90 ÷ 120"],
+                    ["14", "Average thickness, mm", "30 ÷ 40"],
+                ],
+            },
+        },
+    ],
+};
+
+const c4eSheet: DataSheet = {
+    bracketLabel: "C4-E - Technical Data",
+    title: "C4-E Technical Data Sheet",
+    sections: [
+        {
+            table: {
+                headers: ["No.", "Description", "Unit", "Specification"],
+                rows: [
+                    ["1", "Outer appearance:", "-", "Semi-cylindrical block of explosive, with a circular groove in the center, uniform in color ranging from white to yellow."],
+                    ["2", "Dimension", "", ""],
+                    ["3", "Outer diameter of the explosive charge", "mm", "80 ± 2"],
+                    ["4", "Inner diameter of the explosive charge", "mm", "22 ± 1"],
+                    ["5", "Height of the explosive charge", "mm", "135 ± 3"],
+                    ["6", "Mass", "g", "500 ± 25"],
+                    ["7", "Moisture content and volatile substances, not more than", "%", "0.5"],
+                    ["8", "Density", "g/cm³", "1.45 ÷ 1.64"],
+                    ["9", "Plasticity [Needle penetration at 25°C, with density (1.10 ± 0.05) g/cm³]", "mm", "4.4 ÷ 9.5"],
+                    ["10", "Work potential using the pendulum impact method (compared to the explosive energy of TNT), not less than", "%", "116"],
+                    ["11", "Sensitivity by Cast method, not more than", "%", "52"],
+                    ["13", "Detonation velocity at density of (1.45 ± 0.01) g/cm³, not less than", "m/s", "7100"],
+                    ["12", "Lead column compression strength [weight (25 ± 0.01) g, at a density of (1.45 ± 0.01) g/cm³], not less than", "mm", "20"],
+                    ["13", "Thermal stability at 100°C for 40 hours, not more than", "cm³/g", "1.0"],
+                ],
+            },
+        },
+    ],
+};
+
+const rdxSheet: DataSheet = {
+    bracketLabel: "RDX - Technical Data",
+    title: "RDX Technical Data Sheet",
+    sections: [
+        {
+            table: {
+                headers: ["No.", "Technical Specification", "Range Requirements"],
+                rows: [
+                    ["1", "Outer appearance", "Small crystalline form, odorless, with no impurities White, visible"],
+                    ["2", "Melting Point", "Minimum 200 °C"],
+                    ["3", "Acidity (as HNO₃)", "Maximum 0.05%"],
+                    ["4", "Insoluble Particles Remaining on U.S. Standard Sieve No. 60", "Maximum 5 particles"],
+                    ["5", "Total Content of Insoluble Impurities in Marshall Defense", "Maximum 0.05%"],
+                    ["6", "Total Content of Insoluble Inorganic Substances", "Maximum 0.03%"],
+                    ["7", "Impact Sensitivity (Kast Method)", "Maximum 84%"],
+                    ["", "Particle Size Distribution: Standard Distribution", ""],
+                    ["1", "Passing through U.S. Standard Sieve No. 20", "95–100%"],
+                    ["2", "Passing through U.S. Standard Sieve No. 50", "70–100%"],
+                    ["3", "Passing through U.S. Standard Sieve No. 100", "20–90%"],
+                ],
+            },
+        },
+    ],
+};
+
+const compBSheet: DataSheet = {
+    bracketLabel: "Comp B - Technical Data",
+    title: "Comp B Explosive Technical Data Sheet",
+    sections: [
+        {
+            subtitle: "1. Technical specification of Hexolite explosive TNHH-TH40 particle and flake",
+            table: {
+                headers: ["No.", "Criteria", "Requirements"],
+                rows: [
+                    ["1", "Outer appearance:", "Solid, particle.\nYellow/brown, no impurities visible to the unaided eye."],
+                    ["2", "Ratio TNT/RDX/WAX, %", "39,5 ± 2,3 / 59,5 ± 2,0 / 1,0 ± 0,3"],
+                    ["3", "Particle size", ""],
+                    ["4", "The passing rate through a 4 mesh sieve (hole 4.75 mm), %, not less than", "98"],
+                    ["5", "The passing rate through a 40 mesh sieve (hole 0.0425 mm), %, not greater than", "8"],
+                    ["6", "Melting temperature, °C", "80 ± 1"],
+                    ["7", "Loose bulk density, g/cm³, not less than", "0.9"],
+                    ["8", "Volatile substance content, %, not greater than", "0.2"],
+                    ["14", "Ash content, %, not greater than", "0.1"],
+                    ["8", "The work-generating capacity of the pendulum, compared to TNT, %, not less than", "120"],
+                    ["14", "Detonation velocity (at a density of 1.65 g/cm³), m/s", "8,500 ± 400"],
+                ],
+            },
+        },
+        {
+            subtitle: "2. Technical specifications of Hexolite explosive TNHH-TH40 cast charge",
+            table: {
+                headers: ["No.", "Criteria", "Requirements"],
+                rows: [
+                    ["1", "Outer appearance", "Cylindrical explosive charge cast in a 0.5 mm thick paper tube.\n1st type: 175 gram, Diameter Ø36 ± 1 mm\n2nd type: 400 gram, Diameter Ø54 ± 1 mm"],
+                    ["2", "Ratio TNT/RDX/WAX, %", "39,5 ± 2,3 / 59,5 ± 2,0 / 1,0 ± 0,3"],
+                    ["3", "Melting temperature, °C", "80 ± 1"],
+                    ["4", "Volatile substance content, %, not greater than", "0.2"],
+                    ["5", "Ash content, %, not greater than", "0.1"],
+                    ["6", "The work-generating capacity of the pendulum, compared to TNT, %, not less than", "120"],
+                    ["7", "Detonation velocity (at a density of 1.65 g/cm³), m/s", "8,050 ± 400"],
+                ],
+            },
+        },
+    ],
+};
+
+const hmxSheet: DataSheet = {
+    bracketLabel: "HMX - Technical Data",
+    title: "HMX Technical Data Sheet",
+    sections: [
+        {
+            subtitle: "1. Appearance and dimension",
+            table: {
+                headers: ["No.", "Technical Specification", "Range Requirements"],
+                rows: [
+                    ["1", "Outer appearance", "Crystal, uniform small particles"],
+                    ["2", "Color", "White"],
+                    ["3", "Particle size", "The passing rate through a 48mesh sieve (48 holes/cm²) is 100%."],
+                ],
+            },
+        },
+        {
+            subtitle: "2. Physicochemical properties and technical explosive performance of HMX explosive",
+            table: {
+                headers: ["No.", "Criteria", "Unit", "Requirement", "Note"],
+                rows: [
+                    ["1", "Melting temperature", "°C", "≥ 270", ""],
+                    ["2", "Acidity (calculated as acetic acid)", "%", "≤ 0.05", ""],
+                    ["3", "Insoluble substances in acetone", "%", "≤ 0.05", ""],
+                    ["4", "Impact sensitivity", "%", "84 ÷ 96", ""],
+                    ["5", "Work capacity", "% TNT", "≥ 140", ""],
+                    ["6", "Detonation velocity (at a density of 1.25 g/cm³)", "m/s", "≥ 6,700", ""],
+                    ["7", "Moisture content (%)", "%", "≤ 0.1", ""],
+                ],
+            },
+        },
+    ],
+};
+
+const allSheets: DataSheet[] = [tntSheet, c4eSheet, rdxSheet, compBSheet, hmxSheet];
+
+/* ═══════════════════════════════════════════════════════════════
+   CATEGORIES DATA
+   ═══════════════════════════════════════════════════════════════ */
+const categories = [
+    { title: "Sporting & Hunting", image: "/images/products/shotgun-ammunition.webp", href: "/products?category=Sporting and Hunting" },
+    { title: "Ballistic Apparel", image: "/images/products/tactical-apparel.webp", href: "/products?category=Ballistic Apparel" },
+    { title: "Ammunitions", image: "/images/products/propellants.webp", href: "/products?category=Ammunition" },
+    { title: "Military", image: "/images/products/night-vision-optical-gear.webp", href: "/products?category=Military" },
+    { title: "Accessories", image: "/images/products/cleaning-kit.webp", href: "/products?category=Accessories" },
+    { title: "Components", image: "/images/products/primers.webp", href: "/products?category=Components" },
 ];
 
+/* ═══════════════════════════════════════════════════════════════
+   PAGE
+   ═══════════════════════════════════════════════════════════════ */
 export default function EnergeticsPage() {
-  return (
-    <>
-      <section className="py-20 px-4 md:px-8 max-w-7xl mx-auto text-center">
-        <span className="text-primary text-sm font-medium uppercase tracking-widest block mb-4">Energetics</span>
-        <h1 className="text-[64px] leading-[72px] font-bold tracking-[-0.03em] text-white mb-4">Energetics & Munitions</h1>
-        <p className="text-n3 text-[18px] leading-7 max-w-2xl mx-auto">
-          Certified supply and consulting for military-grade energetics. All requests are subject to compliance review.
-        </p>
-      </section>
+    return (
+        <>
+            {/* ═══ HERO BANNER ═══ */}
+            <section className="relative h-[60vh] md:h-[612px] flex items-end overflow-hidden border-b border-n8">
+                <Image
+                    src="/images/sub-page-header.webp"
+                    alt="Military Energetics"
+                    fill
+                    priority
+                    className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
-      <FormSection id="form1" topLabel="Section 01" title="Authorized Personnel Registration" fields={[
-        { label: "Full Name", type: "text", required: true },
-        { label: "Military/Agency ID", type: "text", required: true },
-        { label: "Organization", type: "text", required: true },
-        { label: "Country", type: "text", required: true },
-        { label: "Email Address", type: "email", required: true },
-        { label: "Phone Number", type: "tel" },
-        { label: "Security Clearance Level", type: "select", options: ["None", "Confidential", "Secret", "Top Secret", "TS/SCI"] },
-        { label: "Additional Notes", type: "textarea" },
-      ]} />
+                <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full pb-12 md:pb-20">
+                    <div className="inline-flex items-center gap-1 mb-2">
+                        <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">[</span>
+                        <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">Products</span>
+                        <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
+                    </div>
 
-      <FormSection id="form2" topLabel="Section 02" title="Pyrotechnics Request Form" subtitle="Submit a request for pyrotechnic training devices, smoke signals, and illumination munitions." fields={[
-        { label: "Item Type", type: "select", options: ["Smoke Signal", "Illumination Flare", "Training Grenade", "Trip Flare", "Star Cluster"], required: true },
-        { label: "Quantity Required", type: "number", required: true },
-        { label: "Delivery Location", type: "text", required: true },
-        { label: "Required Date", type: "date", required: true },
-        { label: "End-Use Certificate", type: "text" },
-        { label: "Special Requirements", type: "textarea" },
-      ]} />
+                    <h1 className="text-h3 md:text-h2 tracking-h3 md:tracking-h2 font-bold text-white mb-4">
+                        Military Energetics
+                    </h1>
+                    <p className="text-p4 md:text-p3 tracking-p font-normal text-n2 max-w-xl">
+                        It is our quality, attention to detail and level of service that enables us to stand out from other suppliers and remain at the forefront of the industry.
+                    </p>
+                </div>
+            </section>
 
-      <FormSection id="form3" topLabel="Section 03" title="Explosive Ordnance Inquiry" subtitle="Inquire about EOD equipment, training munitions, and controlled explosive devices." fields={[
-        { label: "Organization Name", type: "text", required: true },
-        { label: "Contact Person", type: "text", required: true },
-        { label: "Email", type: "email", required: true },
-        { label: "Product Category", type: "select", options: ["Training Munitions", "Practice Charges", "Initiating Systems", "Detonators", "Demo Kits"] },
-        { label: "Intended Use", type: "textarea", required: true },
-      ]} />
+            {/* ═══ TECHNICAL DATA SHEETS ═══ */}
+            {allSheets.map((sheet, i) => (
+                <div key={i}>
+                    <DataSheetBlock sheet={sheet} />
+                </div>
+            ))}
 
-      <FormSection id="form4" topLabel="Section 04" title="Demolition Systems Request" subtitle="Technical forms for controlled demolition and breaching operations." fields={[
-        { label: "Unit/Agency", type: "text", required: true },
-        { label: "Commanding Officer", type: "text" },
-        { label: "Operation Type", type: "select", options: ["Training", "Operational", "Research", "Evaluation"] },
-        { label: "System Type", type: "select", options: ["Linear Charge", "Shaped Charge", "Breaching Kit", "Obstacle Clearance", "Custom"] },
-        { label: "Quantity", type: "number" },
-        { label: "Target Environment", type: "text" },
-        { label: "Tactical Notes", type: "textarea" },
-      ]} />
+            {/* ═══ CATEGORIES SECTION ═══ */}
+            <section className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto">
+                {/* Header row */}
+                <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+                    <div>
+                        <div className="inline-flex items-center gap-1 uppercase mb-2">
+                            <span className="text-n4 text-[13px] font-medium tracking-[0.12em]">[</span>
+                            <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">Categories</span>
+                            <span className="text-n4 text-[13px] font-medium tracking-[0.12em]">]</span>
+                        </div>
+                        <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
+                            Browse Our Full
+                            <br />
+                            Product Categories
+                        </h2>
+                    </div>
+                    <Link
+                        href="/products"
+                        className="inline-flex items-center gap-1 text-btn1 tracking-btn1 font-semibold uppercase text-white underline underline-offset-4 hover:text-n2 transition-colors"
+                    >
+                        Product Catalog <ChevronRight size={16} />
+                    </Link>
+                </div>
 
-      <FormSection id="form5" topLabel="Section 05" title="Counter-IED Solutions Request" subtitle="Protective measures, detection equipment, and training programs." fields={[
-        { label: "Requesting Organization", type: "text", required: true },
-        { label: "Country of Deployment", type: "text", required: true },
-        { label: "Threat Environment", type: "select", options: ["Urban", "Desert", "Jungle", "Mountain", "Mixed"] },
-        { label: "Solution Type", type: "select", options: ["Detection Equipment", "ECM/Jamming", "Protective Armor", "Training Program", "Consulting"] },
-        { label: "Personnel Count", type: "number" },
-        { label: "Operational Context", type: "textarea", required: true },
-      ]} />
+                {/* Category cards — 6 columns on desktop */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                    {categories.map((cat) => (
+                        <Link key={cat.title} href={cat.href} className="group block">
+                            <div className="rounded-2xl overflow-hidden bg-[#0D0D0D] aspect-square flex items-center justify-center">
+                                <Image
+                                    src={cat.image}
+                                    alt={cat.title}
+                                    width={200}
+                                    height={200}
+                                    className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 rounded-3xl"
+                                />
+                            </div>
+                            <p className="mt-3 text-p5 tracking-p font-normal text-n2 text-center group-hover:text-white transition-colors">
+                                {cat.title}
+                            </p>
+                        </Link>
+                    ))}
+                </div>
+            </section>
 
-      <FormSection id="form6" topLabel="Section 06" title="Compliance & Export Documentation" subtitle="Compliance review and ITAR/EAR export documentation for energetics procurement." fields={[
-        { label: "Applicant Name", type: "text", required: true },
-        { label: "Applicant Organization", type: "text", required: true },
-        { label: "Destination Country", type: "text", required: true },
-        { label: "Export License Number", type: "text" },
-        { label: "End-User Certificate (EUC) Number", type: "text" },
-        { label: "Intended End-Use", type: "textarea", required: true },
-      ]} />
-
-      <FormSection id="form7" topLabel="Section 07" title="Technical Consulting Request" subtitle="Request expert guidance on energetics selection, testing, and deployment protocols." fields={[
-        { label: "Organization", type: "text", required: true },
-        { label: "Technical Contact", type: "text", required: true },
-        { label: "Email", type: "email", required: true },
-        { label: "Consultation Type", type: "select", options: ["Product Selection", "Safety Review", "Field Testing", "Training Design", "Regulatory Compliance"] },
-        { label: "Timeline", type: "select", options: ["Immediate (1-2 weeks)", "Short-term (1 month)", "Medium-term (3 months)", "Long-term (6+ months)"] },
-        { label: "Project Description", type: "textarea", required: true },
-      ]} />
-
-      <FormSection id="form8" topLabel="Section 08" title="Safety Assessment Form" subtitle="Mandatory safety and regulatory assessment for all energetics procurements." fields={[
-        { label: "Safety Officer Name", type: "text", required: true },
-        { label: "Safety Officer Certification", type: "text", required: true },
-        { label: "Storage Facility Type", type: "select", options: ["Approved Magazine", "Hardened Bunker", "Field Storage", "None - Will Acquire"] },
-        { label: "Transport Method", type: "select", options: ["Military Vehicle", "Certified Carrier", "Air Freight", "Other"] },
-        { label: "Environmental Risk Level", type: "select", options: ["Low", "Medium", "High", "Classified"] },
-        { label: "Safety Protocol Description", type: "textarea", required: true },
-      ]} />
-
-      {/* Services Cards */}
-      <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto border-t border-white/5">
-        <div className="grid md:grid-cols-2 gap-8 mb-12">
-          <div>
-            <span className="text-primary text-sm font-medium uppercase tracking-widest block mb-2">Services</span>
-            <h2 className="text-[40px] leading-[48px] font-bold tracking-[-0.025em] text-white">Energetics Capabilities</h2>
-          </div>
-          <div className="flex items-end">
-            <p className="text-n3 text-[16px] leading-6">Our energetics division supports all aspects of military and law enforcement energetics procurement, handling, and compliance.</p>
-          </div>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {serviceCards.map((c, i) => (
-            <div key={i} className="glass-card rounded-xl p-5 text-center">
-              <div className="text-primary mb-3 flex justify-center">{c.icon}</div>
-              <h4 className="text-white font-semibold text-xs mb-2">{c.title}</h4>
-              <p className="text-n4 text-xs leading-4 hidden lg:block">{c.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <CTASection topLabel="Energetics" title="Ready to Discuss Your Energetics Needs?" description="Our certified team is ready to assist with procurement, compliance, and deployment." />
-    </>
-  );
+            {/* ═══ CTA SECTION ═══ */}
+            <CTASection />
+        </>
+    );
 }
