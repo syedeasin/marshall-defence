@@ -133,7 +133,7 @@ function ProductsContent() {
 
 export default function ProductsPage() {
     return (
-        <Suspense>
+        <Suspense fallback={null}>
             <ProductsContent />
         </Suspense>
     );

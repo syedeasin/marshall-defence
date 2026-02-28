@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Button from "@/components/ui/Button";
 
 const navLinks = [
@@ -103,26 +103,20 @@ export default function Header() {
                         <ul className="flex flex-col gap-3">
                             {navLinks.map((l) => (
                                 <li key={l.href}>
-                                    {l.active ? (
-                                        <Link
-                                            href={l.href}
-                                            onClick={() => setOpen(false)}
-                                            className="w-full block text-p2 tracking-p2 font-medium uppercase text-white py-3 border-b border-w10 transition-opacity hover:opacity-80"
-                                        >
-                                            {l.label}
-                                        </Link>
-                                    ) : (
-                                        <span className="w-full block text-p2 tracking-p2 font-medium uppercase text-white py-3 border-b border-w10 opacity-40 cursor-not-allowed">
-                                            {l.label}
-                                        </span>
-                                    )}
+                                    <Link
+                                        href={l.href}
+                                        onClick={() => setOpen(false)}
+                                        className="w-full block text-p2 tracking-p font-medium uppercase text-white py-3 border-b border-w10 transition-opacity hover:opacity-80"
+                                    >
+                                        {l.label}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
                     </nav>
 
                     {/* Bottom: CTA */}
-                    <div className="pt-6 opacity-40 cursor-not-allowed pointer-events-none">
+                    <div className="pt-6">
                         <Button
                             variant="glass"
                             size="lg"

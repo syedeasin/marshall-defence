@@ -83,7 +83,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-n9">
               <Image
-                  src="https://placehold.co/800x600/1a1a1a/333?text=Tactical+Operator"
+                  src="/images/operationOverview.webp"
                   alt="Tactical operator"
                   fill
                   className="object-cover"
@@ -92,7 +92,7 @@ export default function AboutPage() {
             </div>
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-n9">
               <Image
-                  src="https://placehold.co/800x600/1a1a1a/333?text=Warehouse+Storage"
+                  src="/images/productTesting.webp"
                   alt="Defense warehouse"
                   fill
                   className="object-cover"
@@ -167,7 +167,7 @@ export default function AboutPage() {
             {/* Image */}
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-n9">
               <Image
-                  src="https://placehold.co/800x600/1a1a1a/333?text=Operator+Aiming"
+                  src="/images/sub-page-header.webp"
                   alt="Operational focus"
                   fill
                   className="object-cover"

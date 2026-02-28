@@ -33,8 +33,6 @@ export const PRODUCTS: Product[] = [
     image: "/images/products/shotguns-rifles.webp",
     gallery: [
       "/images/products/shotguns-rifles/gallery-1.webp",
-      "/images/products/shotguns-rifles/gallery-2.webp",
-      "/images/products/shotguns-rifles/gallery-3.webp",
     ],
     description:
         "Invader Semi-Auto Shotgun: Action: Semi-Auto Shotgun, Vertical Magazine System, Gas Operated. Gauge: 12 Gauge. Chamber: 3\". Stock: Tactical Stock. Barrel: 4140 stainless steel drilled rod. Inner surface is hard white chromium plated, outer surface is black chromium plated. Barrel Length: 18\". Magazine Capacity: 5 rounds. Choke: Inner 5 mobile choke. Overall Length: 36.22\". Average Weight: 8.8 Lbs. Optional Colors: Black (ET4IN-11400B) & Red (ET4IN-11401R).",
@@ -57,11 +55,7 @@ export const PRODUCTS: Product[] = [
       "Black chromium plated outer surface",
       "Optional Colors: Black & Red",
     ],
-    pdfs: [
-      { label: "MD AK12 CAT", url: "/pdfs/products/md-ak12-cat.pdf" },
-      { label: "Shotguns Rifles", url: "/pdfs/products/shotguns-rifles.pdf" },
-      { label: "Shotgun Rifles Series 3", url: "/pdfs/products/shotgun-rifles-series-3.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 2. Shotgun Ammunition ─────────────────────────────────
@@ -71,11 +65,7 @@ export const PRODUCTS: Product[] = [
     name: "Shotgun Ammunition",
     category: "Sporting and Hunting",
     image: "/images/products/shotgun-ammunition.webp",
-    gallery: [
-      "/images/products/shotgun-ammunition/gallery-1.webp",
-      "/images/products/shotgun-ammunition/gallery-2.webp",
-      "/images/products/shotgun-ammunition/gallery-3.webp",
-    ],
+    gallery: [],
     description:
         "Our inquiry: 9mm fully loaded cartridges FMJ brass case boxer primer, 5.56×45 NATO fully loaded cartridges FMJ, .40 ACP fully loaded cartridges FMJ brass case boxer primer, .45 ACP fully loaded cartridges FMJ brass case boxer primer, .22LR fully loaded cartridges FMJ brass case boxer primer, .380 auto fully loaded cartridges FMJ brass case, .223 remington, .308 FMJ, boxer primers. Notes: steel is acceptable for casings if it is the only option but needs to be priced accordingly for steel and not brass – standard grain for each caliber is acceptable, we want to know what is available or purchase first.",
     specs: [
@@ -95,9 +85,7 @@ export const PRODUCTS: Product[] = [
       "Boxer primers",
       "Multiple caliber options",
     ],
-    pdfs: [
-      { label: "Product Brochure", url: "/pdfs/products/shotgun-ammunition-brochure.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 3. Protection Vests & Helmets ─────────────────────────
@@ -107,20 +95,7 @@ export const PRODUCTS: Product[] = [
     name: "Protection Vests & Helmets",
     category: "Ballistic Apparel",
     image: "/images/products/protection-vests-helmets.webp",
-    gallery: [
-      "/images/products/protection-vests-helmets/gallery-1.webp",
-      "/images/products/protection-vests-helmets/gallery-2.webp",
-      "/images/products/protection-vests-helmets/gallery-3.webp",
-      "/images/products/protection-vests-helmets/gallery-4.webp",
-      "/images/products/protection-vests-helmets/gallery-5.webp",
-      "/images/products/protection-vests-helmets/gallery-6.webp",
-      "/images/products/protection-vests-helmets/gallery-7.webp",
-      "/images/products/protection-vests-helmets/gallery-8.webp",
-      "/images/products/protection-vests-helmets/gallery-9.webp",
-      "/images/products/protection-vests-helmets/gallery-10.webp",
-      "/images/products/protection-vests-helmets/gallery-11.webp",
-      "/images/products/protection-vests-helmets/gallery-12.webp",
-    ],
+    gallery: [],
     description:
         "Customized solutions for your protection. Marshall Defense is one of the most technologically advanced manufacturers of protective equipment in the world. Marshall Defense offers with its team more than 25 years of experience in the ballistic sector. We are experts in technical development, sales, and marketing. We invest all our experience to always develop the best product for our customers. We provide the most innovative armor designs to be used for personal protection equipment and platform protection.",
     specs: [],
@@ -134,11 +109,7 @@ export const PRODUCTS: Product[] = [
       "Spall Liners",
       "Ballistic Blankets",
     ],
-    pdfs: [
-      { label: "Marshall Defense Vests", url: "/pdfs/products/marshall-defense-vests.pdf" },
-      { label: "ME CS-QT 2022 039 Brochure", url: "/pdfs/products/me-cs-qt-2022-039-brochure.pdf" },
-      { label: "Personal Protection Equipment", url: "/pdfs/products/personal-protection-equipment.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 4. Night Vision & Optical Gear ────────────────────────
@@ -161,9 +132,7 @@ export const PRODUCTS: Product[] = [
       "No limitations for thermal cores",
       "No limitations for intensifier tubes",
     ],
-    pdfs: [
-      { label: "Product Brochure", url: "/pdfs/products/night-vision-optical-gear-brochure.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 5. Pistols ────────────────────────────────────────────
@@ -173,14 +142,7 @@ export const PRODUCTS: Product[] = [
     name: "Pistols",
     category: "Military",
     image: "/images/products/pistols.webp",
-    gallery: [
-      "/images/products/pistols/gallery-1.webp",
-      "/images/products/pistols/gallery-2.webp",
-      "/images/products/pistols/gallery-3.webp",
-      "/images/products/pistols/gallery-4.webp",
-      "/images/products/pistols/gallery-5.webp",
-      "/images/products/pistols/gallery-6.webp",
-    ],
+    gallery: [],
     description:
         "X-Calibur Match: The X-Calibur is our well-known, out-of-the-box competition-ready, flagship. We offer to tow new modifications to further accommodate to needs of our customers, who asked for heavier versions as well as for the option to mount a red dot sight, in order to allow them to use their favorite X-Calibur for more and more disciplines in shooting sport. There are two new options available – Match and Match CO, standing for carrying Optics. They both possess an additional weight of 350g in form of a massive steel dust cover, including a standard Picatinny rail for any accessories shooter may want to attach to his X-Calibur. Additionally, the CO version slide is milled to accept a mounting base for a red dot sight. The red dot mount base can be replaced by micrometric rear sight if needed.",
     specs: [],
@@ -192,10 +154,7 @@ export const PRODUCTS: Product[] = [
       "CO version accepts red dot sight mounting base",
       "Micrometric rear sight option",
     ],
-    pdfs: [
-      { label: "High Quality Pistols", url: "/pdfs/products/high-quality-pistols.pdf" },
-      { label: "Variations Brochure", url: "/pdfs/products/pistols-variations-brochure.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 6. Rifles & Sniper Rifles ─────────────────────────────
@@ -205,11 +164,7 @@ export const PRODUCTS: Product[] = [
     name: "Rifles & Sniper Rifles",
     category: "Military",
     image: "/images/products/rifles-sniper-rifles.webp",
-    gallery: [
-      "/images/products/rifles-sniper-rifles/gallery-1.webp",
-      "/images/products/rifles-sniper-rifles/gallery-2.webp",
-      "/images/products/rifles-sniper-rifles/gallery-3.webp",
-    ],
+    gallery: [],
     description:
         "MFR56, designed by SYSTEM DEFENCE, is produced in System Defense factories in Turkey. The MFR56 (MULTIFACTIONAL RIFLE) 5.56x45mm Caliber is a multifunctional machine gun. It can be produced as 2 different systems as OPEN BOLT and CLOSED BOLT due to the references of country-based law enforcement agencies. Manufactured by SYSTEM DEFENCE, the MFR56 is specially designed for local operations. In areas and campuses that restrict the movement and maneuvering capabilities of security units, the FR56 transforms with its dimensions, weight, and functions.",
     specs: [
@@ -225,16 +180,7 @@ export const PRODUCTS: Product[] = [
       "Compact dimensions for restricted areas",
       "Lightweight and maneuverable",
     ],
-    pdfs: [
-      { label: "Rifles Review Update", url: "/pdfs/products/rifles-review-update.pdf" },
-      { label: "Sales Sheet AK-47", url: "/pdfs/products/sales-sheet-ak-47.pdf" },
-      { label: "Rifle Specs", url: "/pdfs/products/rifle-specs.pdf" },
-      { label: "MD-AKM Catalog", url: "/pdfs/products/md-akm-catalog.pdf" },
-      { label: "Tactical Shotguns", url: "/pdfs/products/tactical-shotguns.pdf" },
-      { label: "Marshal Defense Malyuk", url: "/pdfs/products/marshal-defense-malyuk.pdf" },
-      { label: "MD Rifles Sniper", url: "/pdfs/products/md-rifles-sniper.pdf" },
-      { label: "MD Kalashnikov", url: "/pdfs/products/md-kalashnikov.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 7. Flash Bang Hand Grenades ───────────────────────────
@@ -261,9 +207,7 @@ export const PRODUCTS: Product[] = [
       "Steel or aluminum body",
       "Pyrotechnic ignition mechanism",
     ],
-    pdfs: [
-      { label: "Product Brochure", url: "/pdfs/products/flash-bang-hand-grenades-brochure.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 8. Military Multifunction Shovel ──────────────────────
@@ -273,10 +217,7 @@ export const PRODUCTS: Product[] = [
     name: "Military Multifunction Shovel",
     category: "Military",
     image: "/images/products/military-multifunction-shovel.webp",
-    gallery: [
-      "/images/products/military-multifunction-shovel/gallery-1.webp",
-      "/images/products/military-multifunction-shovel/gallery-2.webp",
-    ],
+    gallery: [],
     description:
         "Military multifunction shovel with comprehensive accessory set for field operations.",
     specs: [
@@ -294,9 +235,7 @@ export const PRODUCTS: Product[] = [
       "End lid x 1",
       "Chipper x 1",
     ],
-    pdfs: [
-      { label: "Product Brochure", url: "/pdfs/products/military-multifunction-shovel-brochure.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 9. Surveillance & Optical ─────────────────────────────
@@ -323,9 +262,7 @@ export const PRODUCTS: Product[] = [
       "Easy to adjust",
       "Low battery voltage and IR illumination on warnings",
     ],
-    pdfs: [
-      { label: "Product Brochure", url: "/pdfs/products/surveillance-optical-brochure.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 10. Propellants ───────────────────────────────────────
@@ -335,11 +272,7 @@ export const PRODUCTS: Product[] = [
     name: "Propellants",
     category: "Components",
     image: "/images/products/propellants.webp",
-    gallery: [
-      "/images/products/propellants/gallery-1.webp",
-      "/images/products/propellants/gallery-2.webp",
-      "/images/products/propellants/gallery-3.webp",
-    ],
+    gallery: [],
     description: "Shotshell Ammunition propellant powders available in multiple formulations for various ammunition applications.",
     specs: [],
     features: [
@@ -350,9 +283,7 @@ export const PRODUCTS: Product[] = [
       "Rifle (Carbine) Ammunition",
       "Spherical powders",
     ],
-    pdfs: [
-      { label: "Product Brochure", url: "/pdfs/products/propellants-brochure.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 11. Primers ───────────────────────────────────────────
@@ -362,11 +293,7 @@ export const PRODUCTS: Product[] = [
     name: "Primers",
     category: "Components",
     image: "/images/products/primers.webp",
-    gallery: [
-      "/images/products/primers/gallery-1.webp",
-      "/images/products/primers/gallery-2.webp",
-      "/images/products/primers/gallery-3.webp",
-    ],
+    gallery: [],
     description:
         "Our primers are 10k pcs per box. – 2.1 Million per pallet. Over 18 million are available as of right now. SPP and SRP Primers – Shipped monthly. The CCI primers are boxes of 10k pcs per box. – 2.1 Million per pallet. Over 5 million are available as of right now. CCI Primers – Shipped monthly. First delivery in December. MOQ – 1 container (16.8MM primers).",
     specs: [
@@ -383,9 +310,7 @@ export const PRODUCTS: Product[] = [
       "Monthly shipping schedule",
       "Bulk container quantities",
     ],
-    pdfs: [
-      { label: "Product Brochure", url: "/pdfs/products/primers-brochure.pdf" },
-    ],
+    pdfs: [],
   },
 
   // ─── 12. Cleaning Kit ──────────────────────────────────────
@@ -395,11 +320,7 @@ export const PRODUCTS: Product[] = [
     name: "Cleaning Kit",
     category: "Accessories",
     image: "/images/products/cleaning-kit.webp",
-    gallery: [
-      "/images/products/cleaning-kit/gallery-1.webp",
-      "/images/products/cleaning-kit/gallery-2.webp",
-      "/images/products/cleaning-kit/gallery-3.webp",
-    ],
+    gallery: [],
     description: "Comprehensive firearm cleaning and maintenance product line covering all weapon types and applications.",
     specs: [],
     features: [
@@ -418,7 +339,7 @@ export const PRODUCTS: Product[] = [
       "Retail & POP Displays",
     ],
     pdfs: [
-      { label: "Product Brochure", url: "/pdfs/products/cleaning-kit-brochure.pdf" },
+      { label: "Marshall Cleaning Kits Catalog", url: "/pdfs/MARSHALL-CLEANING-KITS.pdf" },
     ],
   },
 
@@ -429,11 +350,7 @@ export const PRODUCTS: Product[] = [
     name: "Firearm Accessories",
     category: "Accessories",
     image: "/images/products/firearm-accessories.webp",
-    gallery: [
-      "/images/products/firearm-accessories/gallery-1.webp",
-      "/images/products/firearm-accessories/gallery-2.webp",
-      "/images/products/firearm-accessories/gallery-3.webp",
-    ],
+    gallery: [],
     description: "Comprehensive range of firearm accessories covering AR, AK, and shotgun platforms.",
     specs: [],
     features: [
@@ -449,7 +366,7 @@ export const PRODUCTS: Product[] = [
       "Shotguns Handguards",
     ],
     pdfs: [
-      { label: "Product Brochure", url: "/pdfs/products/firearm-accessories-brochure.pdf" },
+      { label: "Marshall Defence Accessories Catalog", url: "/pdfs/Marshall-Defence-Accessories_.pdf" },
     ],
   },
 
@@ -460,11 +377,7 @@ export const PRODUCTS: Product[] = [
     name: "Tactical Apparel",
     category: "Ballistic Apparel",
     image: "/images/products/tactical-apparel.webp",
-    gallery: [
-      "/images/products/tactical-apparel/gallery-1.webp",
-      "/images/products/tactical-apparel/gallery-2.webp",
-      "/images/products/tactical-apparel/gallery-3.webp",
-    ],
+    gallery: [],
     description:
         "09246 / Urban Go Pack: The Urban go pack is a revolution of design. It is not just a tactical backpack. It's a Go Pack! This high quality pack has a place for everything. Padded laptop sleeve, will fit up to 15.6\" laptop. The advanced high cushion back pad and shoulder straps allow for breathability and impact reduction. Main compartment comes with document sleeve and mesh pocket. Hydration bladder compatible (bladder not included).",
     specs: [
@@ -481,8 +394,6 @@ export const PRODUCTS: Product[] = [
       "Hydration bladder compatible",
       "Impact reduction design",
     ],
-    pdfs: [
-      { label: "Product Brochure", url: "/pdfs/products/tactical-apparel-brochure.pdf" },
-    ],
+    pdfs: [],
   },
 ];
