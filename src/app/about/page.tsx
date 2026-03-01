@@ -46,10 +46,10 @@ const industries = [
 
 /* ── Stats row ── */
 const stats = [
-  { value: "15+", label: "Years of Experience" },
-  { value: "53+", label: "Trusted Supply Partners" },
-  { value: "3,701+", label: "Products Delivered Globally" },
-  { value: "98%", label: "Regulatory Compliance" },
+  { value: "50+", label: "Years of Experience" },
+  { value: "100+", label: "Trusted Supply Partners" },
+  { value: "100%", label: "Regulatory Compliance" },
+  { value: "500+", label: "Different Products Delivered Globally" },
 ];
 
 export default function AboutPage() {
