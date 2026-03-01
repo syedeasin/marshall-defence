@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
 
 type CapItem = {
@@ -13,49 +13,46 @@ type CapItem = {
     img: string;
 };
 
-export default function CapabilitiesSection() {
-    const items: CapItem[] = useMemo(
-        () => [
-            {
-                key: "manufacturing",
-                topTitle: "CAPABILITIES",
-                title: "End-to-End Defense\nCapabilities",
-                leftTitle: "Manufacturing & Sourcing",
-                leftDesc:
-                    "Trusted partners ensure compliant production, consistent quality, and reliable supply.",
-                img: "/images/manufacturing-sourcing.webp",
-            },
-            {
-                key: "quality",
-                topTitle: "CAPABILITIES",
-                title: "End-to-End Defense\nCapabilities",
-                leftTitle: "Quality Control & Testing",
-                leftDesc:
-                    "Inspection workflows and verification standards help ensure dependable performance.",
-                img: "/images/quality-control-testing.webp",
-            },
-            {
-                key: "export",
-                topTitle: "CAPABILITIES",
-                title: "End-to-End Defense\nCapabilities",
-                leftTitle: "Export & Compliance Handling",
-                leftDesc:
-                    "Documentation, licensing, and regulatory alignment handled with accuracy and care.",
-                img: "/images/export-compliance-handling.webp",
-            },
-            {
-                key: "logistics",
-                topTitle: "CAPABILITIES",
-                title: "End-to-End Defense\nCapabilities",
-                leftTitle: "Global Logistics & Customs Clearance",
-                leftDesc:
-                    "Secure global delivery and customs coordination for predictable, on-time fulfillment.",
-                img: "/images/global-logistics-customs-clearance.webp",
-            },
-        ],
-        []
-    );
+const items: CapItem[] = [
+    {
+        key: "manufacturing",
+        topTitle: "CAPABILITIES",
+        title: "End-to-End Defense\nCapabilities",
+        leftTitle: "Manufacturing & Sourcing",
+        leftDesc:
+            "Trusted partners ensure compliant production, consistent quality, and reliable supply.",
+        img: "/images/manufacturing-sourcing.webp",
+    },
+    {
+        key: "quality",
+        topTitle: "CAPABILITIES",
+        title: "End-to-End Defense\nCapabilities",
+        leftTitle: "Quality Control & Testing",
+        leftDesc:
+            "Inspection workflows and verification standards help ensure dependable performance.",
+        img: "/images/quality-control-testing.webp",
+    },
+    {
+        key: "export",
+        topTitle: "CAPABILITIES",
+        title: "End-to-End Defense\nCapabilities",
+        leftTitle: "Export & Compliance Handling",
+        leftDesc:
+            "Documentation, licensing, and regulatory alignment handled with accuracy and care.",
+        img: "/images/export-compliance-handling.webp",
+    },
+    {
+        key: "logistics",
+        topTitle: "CAPABILITIES",
+        title: "End-to-End Defense\nCapabilities",
+        leftTitle: "Global Logistics & Customs Clearance",
+        leftDesc:
+            "Secure global delivery and customs coordination for predictable, on-time fulfillment.",
+        img: "/images/global-logistics-customs-clearance.webp",
+    },
+];
 
+export default function CapabilitiesSection() {
     const wrapperRef = useRef<HTMLDivElement>(null);
     const [active, setActive] = useState(0);
 
@@ -79,7 +76,7 @@ export default function CapabilitiesSection() {
         window.addEventListener("scroll", onScroll, { passive: true });
         onScroll();
         return () => window.removeEventListener("scroll", onScroll);
-    }, [items.length]);
+    }, []);
 
     return (
         /* Wrapper is 4 × 100vh tall — section sticks inside it */
@@ -116,6 +113,7 @@ export default function CapabilitiesSection() {
                                         alt={item.leftTitle}
                                         fill
                                         priority={i === 0}
+                                        sizes="(max-width: 1024px) 100vw, 50vw"
                                         className={`object-cover object-center transition-opacity duration-700 ease-in-out ${
                                             i === active ? "opacity-100" : "opacity-0"
                                         }`}

@@ -1,51 +1,46 @@
-import type { Metadata } from "next";
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import CTASection from "@/components/sections/CTASection";
 
-export const metadata: Metadata = {
-  title: "About Us",
-  description:
-    "Learn about Marshall Defense — a trusted B2B military and sporting goods supplier serving defense, law enforcement, and commercial partners worldwide.",
-};
-
 /* ── Industries we serve ── */
 const industries = [
   {
-    tag: "Shooting Ranges",
+    badge: "SHOOTING RANGES",
     title: "Shooting Academies",
-    desc: "Providing a vast array of shooting academies across the United States for precise tactical training.",
-    icon: "🎯",
+    text: "Supplying a vast array of shooting academies across the United States for police tactical training",
+    icon: "/images/icons/shooting-academies.svg",
   },
   {
-    tag: "Military",
+    badge: "MILITARY",
     title: "Infantry Defense",
-    desc: "For military, police, & defense, Marshall provides trusted products to all military branches.",
-    icon: "🛡️",
+    text: "For military, police, & defense, Marshall provides frontline products to all military branches",
+    icon: "/images/icons/military.svg",
   },
   {
-    tag: "Law Enforcement",
+    badge: "LAW ENFORCEMENT",
     title: "Local & State Police",
-    desc: "We cooperate with the latest body armor and defense products for any situation on the front line.",
-    icon: "⚔️",
+    text: "Be equipped with the latest body armor and defense products for any situation on the front line",
+    icon: "/images/icons/law.svg",
   },
   {
-    tag: "Exhibitions",
+    badge: "COLLECTORS",
     title: "Gun Shows",
-    desc: "For the collectors, we supply both legacy and demonstration firearms for exhibitions.",
-    icon: "🏛️",
+    text: "For the collectors, we supply both target range and demonstration firearms for exhibitions",
+    icon: "/images/icons/collectors.svg",
   },
   {
-    tag: "Dealers",
+    badge: "RETAILERS",
     title: "Sporting Goods",
-    desc: "Hunting, sporting, or home-defense, rely on Marshall to keep you equipped for any situation.",
-    icon: "🏹",
+    text: "Hunting, sporting, or home defense, rely on Marshall to keep you equipped for any situation",
+    icon: "/images/icons/retailers.svg",
   },
   {
-    tag: "Ammunition",
+    badge: "AMMUNITIONS",
     title: "Mixed Munitions",
-    desc: "Whatever your need, Marshall has you covered with the best defense options in every category.",
-    icon: "💥",
+    text: "Whatever your need, Marshall has you covered with the best Defense options in every category",
+    icon: "/images/icons/ammunitions.svg",
   },
 ];
 
@@ -73,28 +68,28 @@ export default function AboutPage() {
             <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
           </div>
 
-          <h1 className="text-h3 md:text-h1 tracking-h3 md:tracking-h1 font-bold text-white mb-10 md:mb-14">
-            About Marshall
-            <br />
-            Defense Company
-          </h1>
+          <h2 className="text-h4 md:text-h3 tracking-h2 md:tracking-h3 font-bold text-white mb-10 md:mb-14">
+            About Marshall Defense Company
+          </h2>
 
-          {/* Two hero images side by side */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-n9">
+          {/* Two hero images — image 1 wider than image 2 */}
+          <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 md:gap-6">
+            <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[420px] rounded-xl overflow-hidden bg-n9">
               <Image
-                  src="/images/operationOverview.webp"
-                  alt="Tactical operator"
+                  src="/images/about1.jpg"
+                  alt="Marshall Defense operations"
                   fill
-                  className="object-cover"
                   priority
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="object-cover"
               />
             </div>
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-n9">
+            <div className="relative aspect-[4/3] md:aspect-auto rounded-xl overflow-hidden bg-n9">
               <Image
-                  src="/images/productTesting.webp"
-                  alt="Defense warehouse"
+                  src="/images/about2.jpg"
+                  alt="Marshall Defense team"
                   fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
                   className="object-cover"
               />
             </div>
@@ -128,7 +123,7 @@ export default function AboutPage() {
         {/* ════════════════════════════════════════════
           STATS ROW
           ════════════════════════════════════════════ */}
-        <section className="pb-16 md:pb-24 px-4 md:px-8 max-w-7xl mx-auto">
+        <section className="py-0 pb-16 md:pb-24 px-4 md:px-8 max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 text-center">
             {stats.map((s, i) => (
                 <div
@@ -167,9 +162,10 @@ export default function AboutPage() {
             {/* Image */}
             <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-n9">
               <Image
-                  src="/images/sub-page-header.webp"
+                  src="/images/ammunation.jpg"
                   alt="Operational focus"
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover"
               />
             </div>
@@ -203,42 +199,56 @@ export default function AboutPage() {
         {/* ════════════════════════════════════════════
           INDUSTRIES WE SERVE
           ════════════════════════════════════════════ */}
-        <section className="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto border-t border-white/5">
-          {/* Section label + headline */}
-          <div className="text-center mb-14">
-            <div className="inline-flex items-center gap-1 mb-3">
-              <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">[</span>
-              <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">
-              Industries We Serve
-            </span>
-              <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
-            </div>
-            <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
-              Providing A vast Array of Defense
-              <br className="hidden md:block" />
-              Firearms and Ammunitions
-            </h2>
-          </div>
+        <section className="relative py-16 md:py-24 overflow-hidden">
+          {/* Background image + gradient (same as homepage) */}
+          <Image
+              src="/images/industries-we-serve-section-background.webp"
+              alt="Industries we serve background"
+              fill
+              sizes="100vw"
+              className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#000_0%,rgba(0,0,0,0)_32%,rgba(0,0,0,0)_72%,#000_100%)]" />
 
-          {/* 3×2 grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-xl overflow-hidden">
-            {industries.map((ind) => (
-                <div
-                    key={ind.title}
-                    className="bg-black p-6 md:p-8 flex flex-col gap-4 hover:bg-white/[0.02] transition-colors"
-                >
-                  {/* Tag */}
-                  <span className="text-[11px] font-semibold tracking-[0.18em] uppercase text-n5">
-                {ind.tag}
-              </span>
-                  {/* Title */}
-                  <h4 className="text-h6 tracking-h6 font-bold text-white">{ind.title}</h4>
-                  {/* Description */}
-                  <p className="text-p5 tracking-p font-normal text-n4 flex-1">{ind.desc}</p>
-                  {/* Icon placeholder */}
-                  <span className="text-2xl opacity-60">{ind.icon}</span>
-                </div>
-            ))}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-8">
+            {/* Section label + headline */}
+            <div className="text-center mb-14">
+              <div className="inline-flex items-center gap-1 uppercase">
+                <span className="text-n2 text-p3 tracking-p font-normal">[</span>
+                <span className="text-n2 text-p4 tracking-p font-normal">INDUSTRIES WE SERVE</span>
+                <span className="text-n2 text-p3 tracking-p font-normal">]</span>
+              </div>
+              <h2 className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white px-0 md:px-[200px]">
+                Providing A vast Array of Defense
+                Firearms and Ammunitions
+              </h2>
+            </div>
+
+            {/* Static 3×2 grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {industries.map((ind) => (
+                  <div
+                      key={ind.title}
+                      className="rounded-2xl border border-w5 bg-w3 backdrop-blur-[20px] p-10"
+                  >
+                    <div className="inline-flex items-center rounded-lg bg-w5 px-3 py-[6px]">
+                      <span className="text-p5 tracking-p font-normal text-n2 uppercase">{ind.badge}</span>
+                    </div>
+                    <h5 className="mt-6 text-h5 tracking-h5 font-bold text-white">{ind.title}</h5>
+                    <p className="mt-2 text-p4 tracking-p font-normal text-n2 max-w-[28ch]">{ind.text}</p>
+                    <div className="mt-[80px] flex justify-end">
+                      <Image
+                          src={ind.icon}
+                          alt={`${ind.title} icon`}
+                          width={60}
+                          height={60}
+                          sizes="60px"
+                          className="w-[60px] h-[60px]"
+                      />
+                    </div>
+                  </div>
+              ))}
+            </div>
           </div>
         </section>
 

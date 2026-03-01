@@ -11,10 +11,12 @@ const sitemap = [
 ];
 
 const categories = [
-  { label: "Firearms", href: "/products" },
-  { label: "Ammunition", href: "/products" },
-  { label: "Defense Apparel", href: "/products" },
-  { label: "Tactical Supplies", href: "/products" },
+  { label: "Sporting & Hunting", href: "/products?category=Sporting and Hunting" },
+  { label: "Ballistic Apparel", href: "/products?category=Ballistic Apparel" },
+  { label: "Ammunitions", href: "/products?category=Ammunition" },
+  { label: "Military", href: "/products?category=Military" },
+  { label: "Accessories", href: "/products?category=Accessories" },
+  { label: "Components", href: "/products?category=Components" },
 ];
 
 export default function Footer() {
@@ -86,12 +88,12 @@ export default function Footer() {
                   <ul className="mt-6 flex flex-col gap-3">
                     <li className="flex items-center gap-3 text-p4 tracking-p font-normal text-white">
                       <Phone size={18} className="text-white/80" />
-                      <span>+1 (978) 382-2379</span>
+                      <a href="tel:+19783822379" className="hover:opacity-80">+1 (978) 382-2379</a>
                     </li>
 
                     <li className="flex items-center gap-3 text-p4 tracking-p font-normal text-white">
                       <MessageCircle size={18} className="text-white/80" />
-                      <span>+1 (978) 852-2850</span>
+                      <a href="https://wa.me/19788522850" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">+1 (978) 852-2850</a>
                     </li>
 
                     <li className="flex items-center gap-3 text-p4 tracking-p font-normal text-white">
@@ -103,11 +105,11 @@ export default function Footer() {
 
                     <li className="flex items-start gap-3 text-p4 tracking-p font-normal text-white">
                       <MapPin size={18} className="text-white/80 mt-1" />
-                      <span>
-                      Broken Arrow, Oklahoma,
-                      <br />
-                      74014, USA
-                    </span>
+                      <a href="https://maps.app.goo.gl/vCqATMnznSp3mwjM7" target="_blank" rel="noopener noreferrer" className="hover:opacity-80">
+                        Broken Arrow, Oklahoma,
+                        <br />
+                        74014, USA
+                      </a>
                     </li>
                   </ul>
                 </div>
@@ -120,7 +122,7 @@ export default function Footer() {
                     alt="ITAR Registered"
                     width={240}
                     height={64}
-                    unoptimized
+                    sizes="240px"
                     className="h-16 w-auto"
                 />
               </div>

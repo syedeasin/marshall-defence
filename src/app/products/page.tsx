@@ -40,6 +40,7 @@ function ProductsContent() {
                     alt="Products"
                     fill
                     priority
+                    sizes="100vw"
                     className="object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
@@ -102,6 +103,7 @@ function ProductsContent() {
                                     alt={p.name}
                                     width={420}
                                     height={384}
+                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                     className="w-full h-auto"
                                 />
                             </div>

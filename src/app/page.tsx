@@ -1,9 +1,11 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import CTASection from "@/components/sections/CTASection";
-import IndustriesWeServeSection from "@/components/sections/IndustriesWeServeSection";
-import CapabilitiesSection from "@/components/sections/CapabilitiesSection";
-import CategoriesSection from "@/components/sections/CategoriesSection";
+
+const CategoriesSection = dynamic(() => import("@/components/sections/CategoriesSection"));
+const CapabilitiesSection = dynamic(() => import("@/components/sections/CapabilitiesSection"));
+const IndustriesWeServeSection = dynamic(() => import("@/components/sections/IndustriesWeServeSection"));
 
 const aboutText =
   "Marshall Defense is a military and sporting good equipment supplier that delivers solutions that meet requirements. Meeting your needs and providing top quality service is our mission in delivering to our clients.";
@@ -18,6 +20,7 @@ export default function HomePage() {
           alt="Global defense supply."
           fill
           priority
+          sizes="100vw"
           className="object-cover object-top"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
@@ -61,6 +64,7 @@ export default function HomePage() {
                   src="/images/seal.webp"
                   alt="Marshall Defense seal"
                   fill
+                  sizes="(max-width: 1024px) 72px, 100px"
                   className="object-contain"
                 />
               </div>
@@ -87,7 +91,6 @@ export default function HomePage() {
                 src="/images/operationOverview.webp"
                 alt="Operations Overview"
                 fill
-                priority
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
@@ -97,7 +100,6 @@ export default function HomePage() {
                 src="/images/productTesting.webp"
                 alt="Product Testing"
                 fill
-                priority
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
@@ -129,7 +131,6 @@ export default function HomePage() {
               alt="Global defense supply network map"
               width={1920}
               height={1080}
-              priority
               className="w-full h-auto"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 1200px"
             />

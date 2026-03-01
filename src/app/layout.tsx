@@ -54,8 +54,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={GeistSans.variable}>
-      <body className="font-geist bg-black text-white antialiased">
+    <html lang="en" className={GeistSans.variable} suppressHydrationWarning>
+      <body className="font-geist bg-black text-white antialiased" suppressHydrationWarning>
         <SmoothScroll>
           <Header />
           <main>{children}</main>

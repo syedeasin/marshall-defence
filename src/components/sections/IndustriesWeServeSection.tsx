@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { clamp01 } from "@/lib/utils";
 
 type Card = {
@@ -10,6 +10,45 @@ type Card = {
     text: string;
     icon: string;
 };
+
+const cards: Card[] = [
+    {
+        badge: "SHOOTING RANGES",
+        title: "Shooting Academies",
+        text: "Supplying a vast array of shooting academies across the United States for police tactical training",
+        icon: "/images/icons/shooting-academies.svg",
+    },
+    {
+        badge: "MILITARY",
+        title: "Infantry Defense",
+        text: "For military, police, & defense, Marshall provides frontline products to all military branches",
+        icon: "/images/icons/military.svg",
+    },
+    {
+        badge: "LAW ENFORCEMENT",
+        title: "Local & State Police",
+        text: "Be equipped with the latest body armor and defense products for any situation on the front line",
+        icon: "/images/icons/law.svg",
+    },
+    {
+        badge: "COLLECTORS",
+        title: "Gun Shows",
+        text: "For the collectors, we supply both target range and demonstration firearms for exhibitions",
+        icon: "/images/icons/collectors.svg",
+    },
+    {
+        badge: "RETAILERS",
+        title: "Sporting Goods",
+        text: "Hunting, sporting, or home defense, rely on Marshall to keep you equipped for any situation",
+        icon: "/images/icons/retailers.svg",
+    },
+    {
+        badge: "AMMUNITIONS",
+        title: "Mixed Munitions",
+        text: "Whatever your need, Marshall has you covered with the best Defense options in every category",
+        icon: "/images/icons/ammunitions.svg",
+    },
+];
 
 export default function IndustriesWeServeSection() {
     const wrapRef = useRef<HTMLElement | null>(null);
@@ -22,48 +61,6 @@ export default function IndustriesWeServeSection() {
     const targetXRef = useRef<number>(0);
     const currentXRef = useRef<number>(0);
     const rafRef = useRef<number | null>(null);
-
-    const cards: Card[] = useMemo(
-        () => [
-            {
-                badge: "SHOOTING RANGES",
-                title: "Shooting Academies",
-                text: "Supplying a vast array of shooting academies across the United States for police tactical training",
-                icon: "/images/icons/shooting-academies.svg",
-            },
-            {
-                badge: "MILITARY",
-                title: "Infantry Defense",
-                text: "For military, police, & defense, Marshall provides frontline products to all military branches",
-                icon: "/images/icons/military.svg",
-            },
-            {
-                badge: "LAW ENFORCEMENT",
-                title: "Local & State Police",
-                text: "Be equipped with the latest body armor and defense products for any situation on the front line",
-                icon: "/images/icons/law.svg",
-            },
-            {
-                badge: "COLLECTORS",
-                title: "Gun Shows",
-                text: "For the collectors, we supply both target range and demonstration firearms for exhibitions",
-                icon: "/images/icons/collectors.svg",
-            },
-            {
-                badge: "RETAILERS",
-                title: "Sporting Goods",
-                text: "Hunting, sporting, or home defense, rely on Marshall to keep you equipped for any situation",
-                icon: "/images/icons/retailers.svg",
-            },
-            {
-                badge: "AMMUNITIONS",
-                title: "Mixed Munitions",
-                text: "Whatever your need, Marshall has you covered with the best Defense options in every category",
-                icon: "/images/icons/ammunitions.svg",
-            },
-        ],
-        []
-    );
 
     useEffect(() => {
         const wrap = wrapRef.current;
@@ -136,7 +133,6 @@ export default function IndustriesWeServeSection() {
             window.removeEventListener("scroll", onScroll);
             window.removeEventListener("resize", onResize);
 
-            // ✅ Proper TypeScript-safe cleanup
             const rafId = rafRef.current;
             if (rafId !== null) {
                 cancelAnimationFrame(rafId);
@@ -154,7 +150,7 @@ export default function IndustriesWeServeSection() {
                     src="/images/industries-we-serve-section-background.webp"
                     alt="Industries we serve background"
                     fill
-                    priority
+                    sizes="100vw"
                     className="object-cover object-center"
                 />
 
@@ -215,6 +211,7 @@ export default function IndustriesWeServeSection() {
                                                     alt={`${c.title} icon`}
                                                     width={60}
                                                     height={60}
+                                                    sizes="60px"
                                                     className="w-[60px] h-[60px]"
                                                 />
                                             </div>
@@ -233,4 +230,3 @@ export default function IndustriesWeServeSection() {
         </section>
     );
 }
-

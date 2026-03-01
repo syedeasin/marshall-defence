@@ -64,13 +64,15 @@ export default async function SingleProductPage({
           {/* ── LEFT: Images ── */}
           <div>
             {/* Main image */}
-            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-n9 border border-white/5">
+            <div className="rounded-3xl overflow-hidden bg-n9 border border-white/5">
               <Image
                 src={product.image}
                 alt={product.name}
-                fill
+                width={800}
+                height={800}
                 priority
-                className="object-contain"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="w-full h-auto"
               />
             </div>
 
@@ -86,7 +88,8 @@ export default async function SingleProductPage({
                       src={img}
                       alt={`${product.name} view ${i + 1}`}
                       fill
-                      className="object-contain opacity-70 hover:opacity-100 transition-opacity"
+                      sizes="(max-width: 768px) 33vw, 17vw"
+                      className="object-cover opacity-70 hover:opacity-100 transition-opacity"
                     />
                   </div>
                 ))}
@@ -183,6 +186,7 @@ export default async function SingleProductPage({
                     alt={p.name}
                     width={420}
                     height={384}
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="w-full h-auto"
                   />
                 </div>

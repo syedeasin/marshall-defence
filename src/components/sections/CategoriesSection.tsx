@@ -4,10 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 const categories = [
-  { title: "Firearms", img: "/images/firearms.webp" },
-  { title: "Defense Apparel", img: "/images/defense-apparel.webp" },
-  { title: "Ammunition", img: "/images/ammunition.webp" },
-  { title: "Tactical Supplies", img: "/images/tactical-supplies.webp" },
+  { title: "Firearms", img: "/images/firearms.webp", href: "/products?category=Sporting and Hunting" },
+  { title: "Defense Apparel", img: "/images/defense-apparel.webp", href: "/products?category=Ballistic Apparel" },
+  { title: "Ammunition", img: "/images/ammunition.webp", href: "/products?category=Ammunition" },
+  { title: "Tactical Supplies", img: "/images/tactical-supplies.webp", href: "/products?category=Accessories" },
 ];
 
 export default function CategoriesSection() {
@@ -52,6 +52,7 @@ export default function CategoriesSection() {
               }`}
               sizes="100vw"
               priority={i === 0}
+              quality={85}
             />
           ))}
 
@@ -104,7 +105,7 @@ export default function CategoriesSection() {
                     }`}
                   >
                     <Link
-                      href="/products"
+                      href={cat.href}
                       onClick={(e) => e.stopPropagation()}
                       className="text-btn2 tracking-btn2 font-semibold uppercase text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
                     >

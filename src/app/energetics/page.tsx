@@ -322,6 +322,7 @@ export default function EnergeticsPage() {
                     alt="Military Energetics"
                     fill
                     priority
+                    sizes="100vw"
                     className="object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
@@ -383,6 +384,7 @@ export default function EnergeticsPage() {
                                     alt={cat.title}
                                     width={200}
                                     height={200}
+                                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 17vw"
                                     className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 rounded-3xl"
                                 />
                             </div>

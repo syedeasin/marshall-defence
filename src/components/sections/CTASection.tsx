@@ -27,7 +27,7 @@ export default function CTASection({
               src="/images/cta-background.webp"
               alt="CTA background"
               fill
-              priority
+              sizes="100vw"
               className="object-cover object-top"
           />
 
