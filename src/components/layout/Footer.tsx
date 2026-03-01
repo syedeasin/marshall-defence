@@ -118,7 +118,7 @@ export default function Footer() {
               {/* Bottom row: ITAR logo (gap 60px from items) */}
               <div className="mt-[60px]">
                 <Image
-                    src="/images/itar-regist.png"
+                    src="/images/itar.png"
                     alt="ITAR Registered"
                     width={240}
                     height={64}
