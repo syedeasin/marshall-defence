@@ -50,6 +50,9 @@ export const metadata: Metadata = {
     images: ["/images/hero-bg.webp"],
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: "/images/me-favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -318,7 +318,7 @@ export default function EnergeticsPage() {
             {/* ═══ HERO BANNER ═══ */}
             <section className="relative h-[60vh] md:h-[612px] flex items-end overflow-hidden border-b border-n8">
                 <Image
-                    src="/images/sub-page-header.webp"
+                    src="/images/energetics-background.jpg"
                     alt="Military Energetics"
                     fill
                     priority

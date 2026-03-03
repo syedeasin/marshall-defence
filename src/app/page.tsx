@@ -8,7 +8,7 @@ const CapabilitiesSection = dynamic(() => import("@/components/sections/Capabili
 const IndustriesWeServeSection = dynamic(() => import("@/components/sections/IndustriesWeServeSection"));
 
 const aboutText =
-  "Marshall Defense is a military and sporting good equipment supplier that delivers solutions that meet requirements. Meeting your needs and providing top quality service is our mission in delivering to our clients.";
+  "Marshall Defense is a trusted supplier of military and sporting goods equipment designed to meet mission-critical requirements. We are committed to understanding your needs, delivering superior products, and providing the highest standard of service to every client we serve.";
 
 export default function HomePage() {
   return (
@@ -53,18 +53,18 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 lg:gap-20 mb-20">
 
             {/* Left col (40%) — label + seal */}
-            <div className="flex flex-row items-start justify-between lg:flex-col lg:items-start lg:justify-start lg:gap-8">
+            <div className="flex flex-col items-start justify-between h-full">
               <div className="inline-flex items-center gap-1">
                 <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">[</span>
                 <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">About Us</span>
                 <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
               </div>
-              <div className="w-[72px] h-[72px] lg:w-[100px] lg:h-[100px] relative flex-shrink-0">
+              <div className="w-[160px] h-[160px] lg:w-[200px] lg:h-[200px] relative flex-shrink-0 items-end">
                 <Image
-                  src="/images/seal.webp"
+                  src="/images/clean-seal.png"
                   alt="Marshall Defense seal"
                   fill
-                  sizes="(max-width: 1024px) 72px, 100px"
+                  sizes="(max-width: 1024px) 160px, 200px"
                   className="object-contain"
                 />
               </div>
@@ -88,7 +88,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="relative aspect-video rounded-2xl overflow-hidden bg-n9">
               <Image
-                src="/images/operationOverview.webp"
+                src="/images/premium-image-01.jpg"
                 alt="Operations Overview"
                 fill
                 className="object-cover"
@@ -97,7 +97,7 @@ export default function HomePage() {
             </div>
             <div className="relative aspect-video rounded-2xl overflow-hidden bg-n9">
               <Image
-                src="/images/productTesting.webp"
+                src="/images/premium-image-03.jpg"
                 alt="Product Testing"
                 fill
                 className="object-cover"

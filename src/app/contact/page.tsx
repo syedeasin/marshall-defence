@@ -99,10 +99,6 @@ export default function ContactPage() {
                 <a href="mailto:info@marshall-defense.com" className="hover:text-white transition-colors">
                   info@marshall-defense.com
                 </a>
-                <br />
-                <a href="mailto:info@marshall-defence.com" className="hover:text-white transition-colors">
-                  info@marshall-defence.com
-                </a>
               </p>
             </div>
           </div>

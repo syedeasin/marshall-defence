@@ -120,10 +120,10 @@ export default function Footer() {
                 <Image
                     src="/images/itar.png"
                     alt="ITAR Registered"
-                    width={240}
-                    height={64}
-                    sizes="240px"
-                    className="h-16 w-auto"
+                    width={300}
+                    height={80}
+                    className="h-20 w-auto"
+                    unoptimized
                 />
               </div>
             </div>
@@ -132,24 +132,11 @@ export default function Footer() {
 
         {/* Bottom footer */}
         <div className="border-t border-n9">
-          <div className="max-w-7xl mx-auto px-4 md:px-8 py-9 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="max-w-7xl mx-auto px-4 md:px-8 py-9 flex items-center justify-center">
             <p className="text-p5 tracking-p font-normal text-n4">
               All rights reserved © Marshall Enterprises, LLC. 2026
             </p>
 
-            <div className="flex items-center">
-              <a href="#" className="text-p4 tracking-p font-normal text-white hover:opacity-80">
-                Twitter(x)
-              </a>
-              <span className="mx-4 h-4 w-px bg-n9" />
-              <a href="#" className="text-p4 tracking-p font-normal text-white hover:opacity-80">
-                Instagram
-              </a>
-              <span className="mx-4 h-4 w-px bg-n9" />
-              <a href="#" className="text-p4 tracking-p font-normal text-white hover:opacity-80">
-                Linkedin
-              </a>
-            </div>
           </div>
         </div>
       </footer>
