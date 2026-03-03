@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const categories = [
-  { title: "Firearms", img: "/images/Firearms-image-slider.jpg", href: "/products?category=Sporting and Hunting" },
+  { title: "Firearms", img: "/images/firearms.webp", href: "/products?category=Sporting and Hunting" },
   { title: "Defense Apparel", img: "/images/defense-apparel-new.jpg", href: "/products?category=Ballistic Apparel" },
   { title: "Ammunition", img: "/images/ammunition.webp", href: "/products?category=Ammunition" },
   { title: "Tactical Supplies", img: "/images/tactical-supplies.webp", href: "/products?category=Accessories" },
