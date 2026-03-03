@@ -88,7 +88,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div className="relative aspect-video rounded-2xl overflow-hidden bg-n9">
               <Image
-                src="/images/premium-image-01.jpg"
+                src="/images/premium-image-04.jpg"
                 alt="Operations Overview"
                 fill
                 className="object-cover"
