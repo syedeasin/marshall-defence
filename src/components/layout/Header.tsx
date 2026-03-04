@@ -123,6 +123,7 @@ export default function Header() {
                             size="lg"
                             href="/contact"
                             className="w-full"
+                            onClick={() => setOpen(false)}
                         >
                             Request a Quote
                         </Button>

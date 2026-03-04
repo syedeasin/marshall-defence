@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     q: "How do I request a product sample or quote?",
-    a: "You can use the Request Sample button on any product page, or fill out the contact form on this page. Our team typically responds within 24 business hours.",
+    a: "You can use the Request a Quote button on any product page, or fill out the contact form on this page. Our team typically responds within 24 business hours.",
   },
   {
     q: "Is Marshall Defense ITAR compliant?",

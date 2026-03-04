@@ -193,7 +193,7 @@ export default async function SingleProductPage({
                 <div className="mt-6 text-center overflow-hidden">
                   <h3 className="text-h5 tracking-h5 font-bold text-white">{p.name}</h3>
                   <span className="mt-3 inline-flex items-center justify-center gap-1 text-btn2 font-semibold tracking-btn2 text-n2 group-hover:text-primary group-hover:-translate-y-1 transition-all duration-300 ease-out">
-                    REQUEST SAMPLE
+                    Request a Quote
                     <ChevronRight size={14} />
                   </span>
                 </div>
