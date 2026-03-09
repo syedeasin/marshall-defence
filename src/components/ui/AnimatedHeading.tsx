@@ -41,7 +41,7 @@ function buildWordSpans(
               style={{
                 transform: visible ? 'translateY(0)' : 'translateY(110%)',
                 transition: visible
-                  ? `transform 0.65s cubic-bezier(0.16,1,0.3,1) ${delay + i * stagger}ms`
+                  ? `transform 1s cubic-bezier(0.16,1,0.3,1) ${delay + i * stagger}ms`
                   : 'none',
               }}
             >
@@ -78,7 +78,7 @@ export default function AnimatedHeading({
   as: Tag = 'h2',
   children,
   className,
-  stagger = 55,
+  stagger = 90,
   delay = 0,
 }: Props) {
   const ref = useRef<HTMLHeadingElement>(null);
