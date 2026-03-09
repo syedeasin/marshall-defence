@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 interface CTASectionProps {
   topLabel?: string;
@@ -49,9 +50,9 @@ export default function CTASection({
                       )}
 
                       {/* Title */}
-                      <h3 className="text-h4 md:text-h3 tracking-h3 font-bold text-white whitespace-pre-line">
+                      <AnimatedHeading as="h3" className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
                           {title}
-                      </h3>
+                      </AnimatedHeading>
 
                       {/* Gap: 16px */}
                       <p className="mt-4 text-p4 md:text-p3 tracking-p font-normal text-n2 max-w-2xl mx-auto">

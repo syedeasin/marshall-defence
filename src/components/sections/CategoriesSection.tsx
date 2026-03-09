@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 const categories = [
   { title: "Firearms", img: "/images/firearms.webp", href: "/products?category=Sporting and Hunting" },
@@ -27,11 +28,11 @@ export default function CategoriesSection() {
           </span>
           <span className="text-n2 text-p3 tracking-p font-normal">]</span>
         </div>
-        <h3 className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white">
+        <AnimatedHeading as="h3" className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white">
           Our Defense
           <br />
           Product Categories
-        </h3>
+        </AnimatedHeading>
       </div>
 
       {/* Scroll-hold wrapper — extra 50vh makes the viewer sticky briefly */}

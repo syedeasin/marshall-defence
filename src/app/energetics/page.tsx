@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import CTASection from "@/components/sections/CTASection";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 /* ═══════════════════════════════════════════════════════════════
    TYPES
@@ -113,9 +114,9 @@ function DataSheetBlock({ sheet }: { sheet: DataSheet }) {
             </div>
 
             {/* Title */}
-            <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white text-center uppercase mb-12">
+            <AnimatedHeading as="h2" className="text-h4 md:text-h3 tracking-h3 font-bold text-white text-center uppercase mb-12">
                 {sheet.title}
-            </h2>
+            </AnimatedHeading>
 
             {/* Sections */}
             <div className="space-y-12">
@@ -334,9 +335,9 @@ export default function EnergeticsPage() {
                         <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
                     </div>
 
-                    <h1 className="text-h3 md:text-h2 tracking-h3 md:tracking-h2 font-bold text-white mb-4">
+                    <AnimatedHeading as="h1" className="text-h3 md:text-h2 tracking-h3 md:tracking-h2 font-bold text-white mb-4">
                         Military Energetics
-                    </h1>
+                    </AnimatedHeading>
                     <p className="text-p4 md:text-p3 tracking-p font-normal text-n2 max-w-xl">
                         It is our quality, attention to detail and level of service that enables us to stand out from other suppliers and remain at the forefront of the industry.
                     </p>
@@ -360,11 +361,11 @@ export default function EnergeticsPage() {
                             <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">Categories</span>
                             <span className="text-n4 text-[13px] font-medium tracking-[0.12em]">]</span>
                         </div>
-                        <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
+                        <AnimatedHeading as="h2" className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
                             Browse Our Full
                             <br />
                             Product Categories
-                        </h2>
+                        </AnimatedHeading>
                     </div>
                     <Link
                         href="/products"

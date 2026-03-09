@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { clamp01 } from "@/lib/utils";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 type Card = {
     badge: string;
@@ -169,10 +170,10 @@ export default function IndustriesWeServeSection() {
                             <span className="text-n2 text-p3 tracking-p font-normal">]</span>
                         </div>
 
-                        <h3 className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white">
+                        <AnimatedHeading as="h3" className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white">
                             Providing A vast Array of Defense
                             Firearms and Ammunitions
-                        </h3>
+                        </AnimatedHeading>
                     </div>
 
                     <div className="mt-4 mb-0 md:mt-12 md:mb-48">

@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { Check } from "lucide-react";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 type CapItem = {
     key: string;
@@ -96,9 +97,9 @@ export default function CapabilitiesSection() {
                                 </span>
                                 <span className="text-n2 text-p3 tracking-p font-normal">]</span>
                             </div>
-                            <h3 className="mt-2 text-h4 tracking-h3 font-bold text-white whitespace-pre-line">
+                            <AnimatedHeading as="h3" className="mt-2 text-h4 tracking-h3 font-bold text-white">
                                 {items[0].title}
-                            </h3>
+                            </AnimatedHeading>
                         </div>
 
                         {/* ─── LEFT: image panel ─── */}
@@ -154,9 +155,9 @@ export default function CapabilitiesSection() {
                                     </span>
                                     <span className="text-n2 text-p3 tracking-p font-normal">]</span>
                                 </div>
-                                <h3 className="mt-2 text-h3 tracking-h3 font-bold text-white whitespace-pre-line">
+                                <AnimatedHeading as="h3" className="mt-2 text-h3 tracking-h3 font-bold text-white">
                                     {items[0].title}
-                                </h3>
+                                </AnimatedHeading>
                             </div>
 
                             {/* Spacer — pushes list to the bottom on desktop */}

@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { PRODUCTS, CATEGORIES } from "@/lib/data";
 import CTASection from "@/components/sections/CTASection";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 function ProductsContent() {
     const searchParams = useSearchParams();
@@ -54,9 +55,9 @@ function ProductsContent() {
                         <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
                     </div>
 
-                    <h1 className="text-h3 md:text-h2 tracking-h3 md:tracking-h2 font-bold text-white mb-4">
+                    <AnimatedHeading as="h1" className="text-h3 md:text-h2 tracking-h3 md:tracking-h2 font-bold text-white mb-4">
                         Our Products
-                    </h1>
+                    </AnimatedHeading>
                     <p className="text-p4 md:text-p3 tracking-p font-normal text-n2 max-w-xl">
                         Innovation, excellence, and client retention are at the heart of the company&apos;s ethos.
                     </p>

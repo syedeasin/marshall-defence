@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import CTASection from "@/components/sections/CTASection";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 /* ── Industries we serve ── */
 const industries = [
@@ -68,9 +69,9 @@ export default function AboutPage() {
             <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
           </div>
 
-          <h2 className="text-h4 md:text-h3 tracking-h2 md:tracking-h3 font-bold text-white mb-10 md:mb-14">
+          <AnimatedHeading as="h2" className="text-h4 md:text-h3 tracking-h2 md:tracking-h3 font-bold text-white mb-10 md:mb-14">
             About Marshall Defense Company
-          </h2>
+          </AnimatedHeading>
 
           {/* Two hero images — image 1 wider than image 2 */}
           <div className="grid grid-cols-1 md:grid-cols-[3fr_2fr] gap-4 md:gap-6">
@@ -150,11 +151,11 @@ export default function AboutPage() {
             </span>
               <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
             </div>
-            <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
+            <AnimatedHeading as="h2" className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
               Fits defense, law enforcement,
               <br className="hidden md:block" />
               and enterprise audiences
-            </h2>
+            </AnimatedHeading>
           </div>
 
           {/* 2-col: image left, text right */}
@@ -172,14 +173,14 @@ export default function AboutPage() {
 
             {/* Mission + Vision text */}
             <div>
-              <h3 className="text-h5 tracking-h5 font-bold text-white mb-3">Our Mission</h3>
+              <AnimatedHeading as="h3" className="text-h5 tracking-h5 font-bold text-white mb-3">Our Mission</AnimatedHeading>
               <p className="text-p4 tracking-p font-normal text-n3 mb-8">
                 We deliver defense and sporting goods solutions that meet real operational needs with accuracy,
                 transparency, and reliability, supported by consistent quality and responsible execution across
                 all operations.
               </p>
 
-              <h3 className="text-h5 tracking-h5 font-bold text-white mb-3">Our Vision</h3>
+              <AnimatedHeading as="h3" className="text-h5 tracking-h5 font-bold text-white mb-3">Our Vision</AnimatedHeading>
               <p className="text-p4 tracking-p font-normal text-n3 mb-8">
                 We build long-term trust through strict quality standards, responsible sourcing, and fully
                 compliant operations that support reliable partnerships worldwide within respected defense
@@ -218,10 +219,10 @@ export default function AboutPage() {
                 <span className="text-n2 text-p4 tracking-p font-normal">INDUSTRIES WE SERVE</span>
                 <span className="text-n2 text-p3 tracking-p font-normal">]</span>
               </div>
-              <h2 className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white px-0 md:px-[200px]">
+              <AnimatedHeading as="h2" className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white px-0 md:px-[200px]">
                 Providing A vast Array of Defense
                 Firearms and Ammunitions
-              </h2>
+              </AnimatedHeading>
             </div>
 
             {/* Static 3×2 grid */}

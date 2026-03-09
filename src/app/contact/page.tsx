@@ -5,6 +5,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MapPin, Phone, Mail, ChevronUp } from "lucide-react";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 /* ═══════════════════════════════════════════════════════════════
    FAQ DATA
@@ -47,9 +48,9 @@ export default function ContactPage() {
             <span className="text-n4 text-[13px] font-medium tracking-[0.12em]">]</span>
           </div>
 
-          <h1 className="text-h3 md:text-h2 tracking-h3 md:tracking-h2 font-bold text-white mb-4">
+          <AnimatedHeading as="h1" className="text-h3 md:text-h2 tracking-h3 md:tracking-h2 font-bold text-white mb-4">
             Get in touch
-          </h1>
+          </AnimatedHeading>
           <p className="text-p4 md:text-p3 tracking-p font-normal text-n3 max-w-lg mx-auto">
             We&apos;re here to help with anything you need. Reach out and
             we&apos;ll get back to you as soon as possible.
@@ -109,9 +110,9 @@ export default function ContactPage() {
           <div className="rounded-2xl border border-n8 overflow-hidden grid grid-cols-1 md:grid-cols-[1fr_1.2fr]">
             {/* LEFT: Form */}
             <div className="p-6 md:p-10">
-              <h2 className="text-h5 tracking-h5 font-bold text-white mb-6">
+              <AnimatedHeading as="h2" className="text-h5 tracking-h5 font-bold text-white mb-6">
                 Drop us a message
-              </h2>
+              </AnimatedHeading>
 
               <form className="space-y-5">
                 {/* First + Last name */}
@@ -222,9 +223,9 @@ export default function ContactPage() {
               <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">FAQ</span>
               <span className="text-n4 text-[13px] font-medium tracking-[0.12em]">]</span>
             </div>
-            <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
+            <AnimatedHeading as="h2" className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
               Frequently Asked Questions
-            </h2>
+            </AnimatedHeading>
           </div>
 
           {/* Accordion */}

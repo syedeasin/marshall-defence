@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Download, ChevronRight } from "lucide-react";
 import { PRODUCTS } from "@/lib/data";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 export function generateStaticParams() {
   return PRODUCTS.map((p) => ({ slug: p.slug }));
@@ -100,9 +101,9 @@ export default async function SingleProductPage({
           {/* ── RIGHT: Product Info ── */}
           <div className="flex flex-col">
             {/* Title */}
-            <h1 className="text-h3 md:text-h2 tracking-h3 md:tracking-h2 font-bold text-white mb-4">
+            <AnimatedHeading as="h1" className="text-h3 md:text-h2 tracking-h3 md:tracking-h2 font-bold text-white mb-4">
               {product.name}
-            </h1>
+            </AnimatedHeading>
 
             {/* Description */}
             <p className="text-p4 tracking-p font-normal text-n3 mb-8">
@@ -147,9 +148,9 @@ export default async function SingleProductPage({
         <>
           <div className="border-t border-white/5" />
           <section className="py-16 px-4 md:px-8 max-w-7xl mx-auto">
-            <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white text-center mb-10">
+            <AnimatedHeading as="h2" className="text-h4 md:text-h3 tracking-h3 font-bold text-white text-center mb-10">
               Download Product Details
-            </h2>
+            </AnimatedHeading>
             <div className="max-w-2xl mx-auto flex flex-col gap-4">
               {product.pdfs.map((pdf, i) => (
                 <a key={i} href={pdf.url} download className="bg-n9 rounded-xl px-6 py-5 flex items-center justify-between group">
@@ -173,9 +174,9 @@ export default async function SingleProductPage({
             <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
           </div>
 
-          <h2 className="text-h4 md:text-h3 tracking-h3 font-bold text-white mb-10">
+          <AnimatedHeading as="h2" className="text-h4 md:text-h3 tracking-h3 font-bold text-white mb-10">
             Explore More Products in this Category
-          </h2>
+          </AnimatedHeading>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12">
             {related.map((p) => (

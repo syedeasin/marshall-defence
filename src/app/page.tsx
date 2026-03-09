@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import CTASection from "@/components/sections/CTASection";
+import AnimatedHeading from "@/components/ui/AnimatedHeading";
 
 const CategoriesSection = dynamic(() => import("@/components/sections/CategoriesSection"));
 const CapabilitiesSection = dynamic(() => import("@/components/sections/CapabilitiesSection"));
@@ -25,11 +26,11 @@ export default function HomePage() {
         />
         <div className="absolute inset-x-0 bottom-0 z-10">
           <div className="max-w-5xl mx-auto px-4 pb-10 sm:pb-14 md:pb-20 text-center">
-            <h1 className="text-[40px] tracking-h3 font-bold text-white md:text-h1 md:tracking-h1 mb-12 md:mb-24">
+            <AnimatedHeading as="h1" className="text-[40px] tracking-h3 font-bold text-white md:text-h1 md:tracking-h1 mb-12 md:mb-24">
               GLOBAL
               <br />
               DEFENSE SUPPLY
-            </h1>
+            </AnimatedHeading>
             <p className="text-p5 md:text-p4 tracking-p text-n2 mx-auto mb-6 md:mb-8 max-w-[42ch] md:max-w-2xl">
               Marshall Defense supplies firearms, ammunition, apparel, and tactical solutions with full
               compliance, global logistics, and proven reliability.
@@ -120,10 +121,10 @@ export default function HomePage() {
             <span className="text-n2 text-p4 tracking-p font-normal">Global Reach</span>
             <span className="text-n2 text-p3 tracking-p font-normal">]</span>
           </div>
-          <h2 className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white">
+          <AnimatedHeading as="h2" className="mt-2 text-h4 md:text-h3 tracking-h3 font-bold text-white">
             Trusted Global Defense <br className="hidden md:block" />
             Supply Network
-          </h2>
+          </AnimatedHeading>
           <div className="mt-12">
             <Image
               src="/images/map-image.webp"
