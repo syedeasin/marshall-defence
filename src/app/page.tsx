@@ -16,14 +16,13 @@ export default function HomePage() {
       {/* Hero */}
       <section className="relative min-h-[100svh] overflow-hidden pt-24">
         <Image
-          src="/images/hero-bg.webp"
+          src="/images/herobg.jpg"
           alt="Global defense supply."
           fill
           priority
           sizes="100vw"
           className="object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 z-10">
           <div className="max-w-5xl mx-auto px-4 pb-10 sm:pb-14 md:pb-20 text-center">
             <h1 className="text-[40px] tracking-h3 font-bold text-white md:text-h1 md:tracking-h1 mb-12 md:mb-24">
