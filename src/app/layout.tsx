@@ -19,15 +19,15 @@ const GeistSans = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL("https://marshall-defense.com"),
   title: {
-    default: "Marshall Defense | Global B2B Defense Equipment Supplier",
+    default: "Marshall Defense | Global Defense Equipment Supplier",
     template: "%s | Marshall Defense",
   },
   description:
-    "Marshall Defense is a trusted B2B supplier of firearms, ammunition, defense apparel, and tactical equipment for military, law enforcement, and government agencies worldwide.",
+    "Marshall Defense is a trusted supplier of firearms, ammunition, defense apparel, and tactical equipment for military, law enforcement, and government agencies worldwide.",
   keywords: [
     "defense supplier",
     "military equipment",
-    "B2B defense",
+    "defense",
     "firearms supplier",
     "tactical equipment",
     "ITAR compliant",
@@ -37,16 +37,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Marshall Defense",
-    title: "Marshall Defense | Global B2B Defense Equipment Supplier",
+    title: "Marshall Defense | Global Defense Equipment Supplier",
     description:
-      "Trusted B2B supplier of firearms, ammunition, and tactical equipment for military, law enforcement, and government agencies worldwide.",
+      "Trusted supplier of firearms, ammunition, and tactical equipment for military, law enforcement, and government agencies worldwide.",
     images: [{ url: "/images/hero-bg.webp", width: 1200, height: 630, alt: "Marshall Defense" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marshall Defense | Global B2B Defense Equipment Supplier",
+    title: "Marshall Defense | Global Defense Equipment Supplier",
     description:
-      "Trusted B2B supplier of firearms, ammunition, and tactical equipment for military and law enforcement.",
+      "Trusted supplier of firearms, ammunition, and tactical equipment for military and law enforcement.",
     images: ["/images/hero-bg.webp"],
   },
   robots: { index: true, follow: true },

@@ -50,34 +50,27 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto w-full">
 
           {/* Row 1: 40/60 split */}
-          <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 lg:gap-20 mb-20">
-
-            {/* Left col (40%) — label + seal */}
-            <div className="flex flex-row items-start justify-between lg:flex-col lg:h-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 mb-20">
+            {/* Left col (40%) — label + heading */}
+            <div className="flex flex-col gap-4">
               <div className="inline-flex items-center gap-1">
                 <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">[</span>
                 <span className="text-n4 text-[13px] font-semibold tracking-[0.18em] uppercase">About Us</span>
                 <span className="text-n5 text-[13px] font-medium tracking-[0.12em]">]</span>
               </div>
-              <div className="w-[112px] h-[112px] lg:w-[160px] lg:h-[160px] relative flex-shrink-0">
-                <Image
-                  src="/images/clean-seal.png"
-                  alt="Marshall Defense seal"
-                  fill
-                  sizes="(max-width: 1024px) 72px, 160px"
-                  className="object-contain"
-                />
-              </div>
+              <AnimatedHeading as="h2" className="text-h4 md:text-h3 tracking-h3 font-bold text-white">
+                Marshall Defense is a military and sporting goods supplier
+              </AnimatedHeading>
             </div>
 
             {/* Right col (60%) — text + link */}
-            <div className="flex flex-col justify-center">
-              <p className="text-p2 md:text-p1 tracking-p font-medium text-white mb-10">
-                {aboutText}
+            <div className="flex flex-col justify-center gap-6">
+              <p className="text-p4 md:text-p3 tracking-p font-normal text-n2">
+                Trusted to meet mission-critical requirements, we deliver superior products and understand your needs — providing the highest standard of service to every client we serve.
               </p>
               <Link
-                href="/about"
-                className="text-btn2 tracking-btn2 inline-flex items-center text-primary font-semibold uppercase border-b border-primary pb-0.5 self-start hover:opacity-70 transition-opacity duration-200"
+                  href="/about"
+                  className="text-btn2 tracking-btn2 inline-flex items-center text-primary font-semibold uppercase border-b border-primary pb-0.5 self-start hover:opacity-70 transition-opacity duration-200"
               >
                 Learn More
               </Link>

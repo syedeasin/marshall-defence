@@ -18,6 +18,7 @@ interface DataTable {
 interface DataSheetSection {
     subtitle?: string;
     table: DataTable;
+    tableVariant?: "numbered" | "labeled";
 }
 
 interface DataSheet {
@@ -29,7 +30,7 @@ interface DataSheet {
 /* ═══════════════════════════════════════════════════════════════
    TABLE COMPONENT
    ═══════════════════════════════════════════════════════════════ */
-function TechTable({ headers, rows }: DataTable) {
+function TechTable({ headers, rows, variant = "numbered" }: DataTable & { variant?: "numbered" | "labeled" }) {
     return (
         <div className="border border-n8 rounded-xl overflow-hidden">
             <div className="overflow-x-auto">
@@ -40,7 +41,7 @@ function TechTable({ headers, rows }: DataTable) {
                             <th
                                 key={i}
                                 className={`py-4 px-6 text-p5 tracking-p font-medium text-n3 text-left ${
-                                    i === 0 ? "w-[80px] text-center" : ""
+                                    i === 0 ? (variant === "numbered" ? "w-[80px] text-center" : "w-[160px]") : ""
                                 } ${i < headers.length - 1 ? "border-r border-n8" : ""}`}
                             >
                                 {h}
@@ -77,7 +78,9 @@ function TechTable({ headers, rows }: DataTable) {
                                         key={ci}
                                         className={`py-4 px-6 text-p5 tracking-p font-normal ${
                                             ci === 0
-                                                ? "text-n4 text-center w-[80px]"
+                                                ? variant === "numbered"
+                                                    ? "text-n4 text-center w-[80px]"
+                                                    : "text-n4 text-left w-[160px]"
                                                 : ci === 1
                                                     ? "text-n2"
                                                     : "text-white"
@@ -127,7 +130,7 @@ function DataSheetBlock({ sheet }: { sheet: DataSheet }) {
                                 {section.subtitle}
                             </h3>
                         )}
-                        <TechTable headers={section.table.headers} rows={section.table.rows} />
+                        <TechTable headers={section.table.headers} rows={section.table.rows} variant={section.tableVariant ?? "numbered"} />
                     </div>
                 ))}
             </div>
@@ -174,23 +177,19 @@ const c4eSheet: DataSheet = {
     title: "C4-E Technical Data Sheet",
     sections: [
         {
+            tableVariant: "labeled",
             table: {
-                headers: ["No.", "Description", "Unit", "Specification"],
+                headers: ["Test Item", "Requirement", "Test Result"],
                 rows: [
-                    ["1", "Outer appearance:", "-", "Semi-cylindrical block of explosive, with a circular groove in the center, uniform in color ranging from white to yellow."],
-                    ["2", "Dimension", "", ""],
-                    ["3", "Outer diameter of the explosive charge", "mm", "80 ± 2"],
-                    ["4", "Inner diameter of the explosive charge", "mm", "22 ± 1"],
-                    ["5", "Height of the explosive charge", "mm", "135 ± 3"],
-                    ["6", "Mass", "g", "500 ± 25"],
-                    ["7", "Moisture content and volatile substances, not more than", "%", "0.5"],
-                    ["8", "Density", "g/cm³", "1.45 ÷ 1.64"],
-                    ["9", "Plasticity [Needle penetration at 25°C, with density (1.10 ± 0.05) g/cm³]", "mm", "4.4 ÷ 9.5"],
-                    ["10", "Work potential using the pendulum impact method (compared to the explosive energy of TNT), not less than", "%", "116"],
-                    ["11", "Sensitivity by Cast method, not more than", "%", "52"],
-                    ["13", "Detonation velocity at density of (1.45 ± 0.01) g/cm³, not less than", "m/s", "7100"],
-                    ["12", "Lead column compression strength [weight (25 ± 0.01) g, at a density of (1.45 ± 0.01) g/cm³], not less than", "mm", "20"],
-                    ["13", "Thermal stability at 100°C for 40 hours, not more than", "cm³/g", "1.0"],
+                    ["Appearance", "White or light yellow, plastic-like particles. May contain a small amount of fine powder. No visible mechanical impurities.", "Pass"],
+                    ["RDX Content %", "90 – 91%", "91%"],
+                    ["Binder Content %", "9 – 10%", "9%"],
+                    ["Density, g/cm", "1.58-1.60", "1.59 g/cm"],
+                    ["Detonation Velocity, m/s", ">8000m/s", "8100m/s"],
+                    ["Oxygen Balance", "-21", "-21%"],
+                    ["Water Resistance", "Suitable for 24 hours", "Conforms"],
+                    ["Mechanical Properties", "Flexible, shape-retaining", "Conforms"],
+                    ["Sensitivity to initiation", "Low (impact & friction)", "Conforms"],
                 ],
             },
         },
